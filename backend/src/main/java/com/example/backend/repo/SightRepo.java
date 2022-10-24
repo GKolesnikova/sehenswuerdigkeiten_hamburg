@@ -10,3 +10,6 @@ public interface SightRepo extends MongoRepository <Sight, String> {
 
 
 }
+ 
+
+ 
