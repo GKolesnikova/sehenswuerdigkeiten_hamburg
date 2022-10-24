@@ -21,6 +21,6 @@ public class Sight {
     private String website;
     private String time;
     private String description;
-    private String location;
+    private String location; 
 
 }
