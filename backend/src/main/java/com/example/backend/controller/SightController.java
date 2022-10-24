@@ -8,7 +8,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/sight")
+@RequestMapping("/api/sights")
 public class SightController {
 
     private final SightService sightService;
@@ -18,7 +18,7 @@ public class SightController {
     }
 
 
-    @GetMapping
+    @GetMapping("/get-all")
     public  List<Sight> getAllSight () {
         return sightService.getAllSight();
     }
