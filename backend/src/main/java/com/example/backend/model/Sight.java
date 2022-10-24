@@ -17,10 +17,10 @@ public class Sight {
 
     private String name;
     private String image;
-    private String adresse;
-    private String webseite;
-    private String uhrzeit;
-    private String beschreibung;
-    private String lokation;
+    private String address;
+    private String website;
+    private String time;
+    private String description;
+    private String location;
 
 }
