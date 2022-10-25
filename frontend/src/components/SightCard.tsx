@@ -10,7 +10,7 @@ export default function SightCard (props: SightCardProps) {
 
     return (
         <div>
-            <p><h2>{props.sight.name}</h2></p>
+            <p><h1>{props.sight.name}</h1></p>
             <img src={props.sight.image} alt={props.sight.name}/>
             <p>Adresse: {props.sight.address}</p>
             <p>Webseite: {props.sight.website}</p>

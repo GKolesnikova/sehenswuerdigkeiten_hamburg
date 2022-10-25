@@ -24,10 +24,5 @@ export default function useSights () {
 
 
 
-
-
-
-
-
-
+    return {sights, getAllSights}
 }
