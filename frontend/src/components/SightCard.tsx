@@ -24,7 +24,6 @@ export default function SightCard (props: SightCardProps) {
                 <p>{props.sight.location}</p>
 
                  </div>
-
             </div>
         </div>
     )

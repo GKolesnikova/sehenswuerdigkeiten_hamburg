@@ -3,6 +3,8 @@ import com.example.backend.model.Sight;
 import com.example.backend.repo.SightRepo;
 import org.junit.jupiter.api.Test;
 import java.util.List;
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -33,8 +35,35 @@ class SightServiceTest {
         );
         verify(sightRepo).findAll();
         assertEquals(actual, expected);
-
-
     }
+
+
+    @Test
+    void deleteSight_whenSightExists () {
+        //GIVEN
+        when(sightRepo.findById("1")).thenReturn(Optional.ofNullable(new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT")));
+
+        //WHEN
+        sightService.deleteSightById("1");
+
+        //THEN
+        verify(sightRepo).deleteById("1");
+    }
+
+     @Test
+     void deleteSight_whenSightDoesNotExists () {
+         //GIVEN
+
+         //WHEN
+         sightService.deleteSightById("1");
+
+         //THEN
+         verify(sightRepo, never()).deleteById("1");
+     }
+
+
+
+
+
 }
 
