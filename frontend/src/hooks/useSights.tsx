@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import {Sight} from "../model/Sight";
 import axios from "axios";
-import React from 'react';
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 

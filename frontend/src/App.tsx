@@ -7,7 +7,7 @@ import SightGallery from "./components/SightGallery";
 function App() {
 
 
-  const {sights, getAllSights} = useSights();
+  const {sights} = useSights();
 
 
 
