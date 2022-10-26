@@ -1,30 +1,21 @@
-import React, {useEffect, useState} from 'react';
 import './App.css';
-import axios from "axios";
+import useSights from "./hooks/useSights";
+import SightGallery from "./components/SightGallery";
 
 
 
 function App() {
 
 
-  const [helloMessage, setHelloMessage] = useState("");
+  const {sights, getAllSights} = useSights();
 
-  useEffect(() => {
-    fetchHelloMessage()
-  }, [])
 
-  function fetchHelloMessage() {
-    axios.get("/api/hello")
-        .then(response => response.data)
-        .then(data => setHelloMessage(data))
-        .then((error) => console.log(error))
-  }
 
 
 
   return (
     <div className="App">
-          <p>{helloMessage}</p>
+        <SightGallery sights={sights}/>
     </div>
   );
 }
