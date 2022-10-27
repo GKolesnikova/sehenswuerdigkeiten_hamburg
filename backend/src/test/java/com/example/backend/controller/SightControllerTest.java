@@ -40,7 +40,7 @@ class SightControllerTest {
         sightRepo.save( new Sight("2","OOO", "KKK", "FFF", "VVV", "SSS", "ZZZ", "WWW"));
 
 
-        //WHEN & THEN
+        // WHEN & THEN
         String expectedJSON = """
                 [
                     {
@@ -77,7 +77,9 @@ class SightControllerTest {
 
     @Test
     void getAllSight_whenSuccessful_Return200 () throws Exception {
+        // GIVEN
 
+        //WHEN & THEN
         mockMvc.perform(
                         get("/api/sights")
                 .contentType("application/json"))
@@ -92,7 +94,7 @@ class SightControllerTest {
         sightRepo.save( new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT"));
         sightRepo.save( new Sight("2","OOO", "KKK", "FFF", "VVV", "SSS", "ZZZ", "WWW"));
 
-        //WHEN & THEN
+        // WHEN & THEN
         String expectedJSON = """
                     {
                         "id": "1",                               
@@ -117,7 +119,9 @@ class SightControllerTest {
 
     @Test
     void getSightById_whenSightNotExists_Return404 () throws Exception {
+        // GIVEN
 
+        // WHEN & THEN
         mockMvc.perform(
                         get("/api/sights/17690"))
                  .andExpect(status().is(404));
@@ -130,7 +134,7 @@ class SightControllerTest {
         // GIVEN
         sightRepo.save( new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT"));
 
-        //WHEN & THEN
+        // WHEN & THEN
         mockMvc.perform(
                         delete("/api/sights/1"))
                 .andExpect(status().is(200));

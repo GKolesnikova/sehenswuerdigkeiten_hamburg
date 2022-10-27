@@ -21,15 +21,16 @@ class SightServiceTest {
 
     @Test
     void getAllSight() {
-        //GIVEN
+        // GIVEN
         when(sightRepo.findAll()).thenReturn(List.of(
                 new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT"),
                 new Sight("2","OOO", "KKK", "FFF", "VVV", "SSS", "ZZZ", "WWW"))
         );
-        //WHEN
+
+        // WHEN
         List<Sight> actual = sightService.getAllSight();
 
-        //THEN
+        // THEN
         List<Sight> expected = List.of(
                 new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT"),
                 new Sight("2","OOO", "KKK", "FFF", "VVV", "SSS", "ZZZ", "WWW")
@@ -39,21 +40,23 @@ class SightServiceTest {
     }
 
 
+
     @Test
     void getSightById_whenExists_ReturnSight() {
-        //GIVEN
+        // GIVEN
         when(sightRepo.findById("1")).thenReturn(Optional.ofNullable(new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT")));
 
-        //WHEN
+        // WHEN
         Optional <Sight> actual = sightRepo.findById("1");
 
-        //THEN
+        // THEN
         Optional <Sight> expected = Optional.of(
                 new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT")
          );
         verify(sightRepo).findById("1");
         assertEquals(actual, expected);
     }
+
 
 
     @Test
@@ -68,42 +71,31 @@ class SightServiceTest {
 
 
 
-
-
-
-
-
-
-
     @Test
     void deleteSight_whenSightExists () {
-        //GIVEN
+        // GIVEN
         when(sightRepo.findById("1")).thenReturn(Optional.ofNullable(new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT")));
 
-        //WHEN
+        // WHEN
         boolean actual = sightService.deleteSightById("1");
 
-        //THEN
+        // THEN
         verify(sightRepo).deleteById("1");
         assertTrue(actual);
     }
 
 
+
      @Test
      void deleteSight_whenSightDoesNotExists () {
-         //GIVEN
+         // GIVEN
 
-         //WHEN
+         // WHEN
          boolean actual = sightService.deleteSightById("1");
 
-         //THEN
+         // THEN
          verify(sightRepo, never()).deleteById("1");
          assertFalse(actual);
      }
-
-
-
-
-
 }
 
