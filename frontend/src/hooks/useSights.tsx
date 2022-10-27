@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import {Sight} from "../model/Sight";
 import axios from "axios";
-import React from 'react';
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -23,10 +22,19 @@ export default function useSights () {
             .catch((error) => toast.error(error.message + " " + error.response.status + " " + error.response.data))
     }
 
+    const deleteSightById = (id: string | undefined) => {
+        axios.delete("/api/sights/delete-by-id/" + id)
+            .then(() => getAllSights())
+            .catch(console.error)
+
+
+
+    }
 
 
 
 
 
-    return {sights, getAllSights}
+
+    return {sights, getAllSights, deleteSightById}
 }

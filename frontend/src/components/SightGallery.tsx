@@ -4,6 +4,7 @@ import SightCard from "./SightCard";
 
 type SightGalleryProps = {
      sights : Sight[] ;
+    deleteSightById: (id: string | undefined) => void;
 
 }
 
@@ -15,7 +16,7 @@ export default function SightGallery (props: SightGalleryProps) {
              <h1>Keine Sehenswürdigkeiten vorhanden</h1>
              :
              props.sights.map((sight) =>
-                 <SightCard sight={sight}/>)
+                 <SightCard sight={sight} deleteSightById={props.deleteSightById}/>)
              }
          </div>
      )

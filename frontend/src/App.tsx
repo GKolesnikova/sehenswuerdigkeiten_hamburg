@@ -7,7 +7,7 @@ import SightGallery from "./components/SightGallery";
 function App() {
 
 
-  const {sights, getAllSights} = useSights();
+  const {sights, deleteSightById } = useSights();
 
 
 
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-        <SightGallery sights={sights}/>
+        <SightGallery sights={sights} deleteSightById={deleteSightById}/>
     </div>
   );
 }

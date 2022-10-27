@@ -3,7 +3,9 @@ import com.example.backend.model.Sight;
 import com.example.backend.repo.SightRepo;
 import org.junit.jupiter.api.Test;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
@@ -33,8 +35,43 @@ class SightServiceTest {
         );
         verify(sightRepo).findAll();
         assertEquals(actual, expected);
-
-
     }
+
+
+    @Test
+    void deleteSight_whenSightExists () {
+        //GIVEN
+        when(sightRepo.findById("1")).thenReturn(Optional.ofNullable(new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT")));
+
+        //WHEN
+        boolean actual = sightService.deleteSightById("1");
+
+        //THEN
+        boolean expected = true;
+        verify(sightRepo).deleteById("1");
+        assertTrue(sightService.deleteSightById("1"));
+        assertEquals(actual, expected);
+    }
+
+
+     @Test
+     void deleteSight_whenSightDoesNotExists () {
+         //GIVEN
+
+         //WHEN
+         boolean actual = sightService.deleteSightById("1");
+
+         //THEN
+         boolean expected = false;
+         verify(sightRepo, never()).deleteById("1");
+         assertFalse(sightService.deleteSightById("1"));
+         assertEquals(actual, expected);
+
+     }
+
+
+
+
+
 }
 

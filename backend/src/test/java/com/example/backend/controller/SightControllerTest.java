@@ -10,6 +10,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -74,6 +75,21 @@ class SightControllerTest {
                 .andExpect(content().json(expectedJSON));
 
     }
+
+    @Test
+    void deleteSightById () throws Exception {
+        // GIVEN
+        sightRepo.save( new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT"));
+
+        //WHEN & THEN
+        mockMvc.perform(delete("/api/sights/delete-by-id/1"))
+                .andExpect(status().is(200));
+
+    }
+
+
+
+
 }
 
 
