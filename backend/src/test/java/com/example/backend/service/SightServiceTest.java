@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
@@ -44,21 +44,29 @@ class SightServiceTest {
         when(sightRepo.findById("1")).thenReturn(Optional.ofNullable(new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT")));
 
         //WHEN
-        sightService.deleteSightById("1");
+        boolean actual = sightService.deleteSightById("1");
 
         //THEN
+        boolean expected = true;
         verify(sightRepo).deleteById("1");
+        assertTrue(sightService.deleteSightById("1"));
+        assertEquals(actual, expected);
     }
+
 
      @Test
      void deleteSight_whenSightDoesNotExists () {
          //GIVEN
 
          //WHEN
-         sightService.deleteSightById("1");
+         boolean actual = sightService.deleteSightById("1");
 
          //THEN
+         boolean expected = false;
          verify(sightRepo, never()).deleteById("1");
+         assertFalse(sightService.deleteSightById("1"));
+         assertEquals(actual, expected);
+
      }
 
 

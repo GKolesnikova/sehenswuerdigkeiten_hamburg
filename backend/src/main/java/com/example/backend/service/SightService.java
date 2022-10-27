@@ -34,13 +34,15 @@ public class SightService {
     }
 
 
-    public void deleteSightById (String id) {
+    public boolean deleteSightById (String id) {
         Optional <Sight> sight = sightRepo.findById(id) ;
 
         if ( sight.isEmpty() ) {
             System.out.println("Sight was not really! It didn't exist in the fist place.");
+            return false;
         } else {
             sightRepo.deleteById(id);
+            return !sightRepo.existsById(id);
         }
     }
 

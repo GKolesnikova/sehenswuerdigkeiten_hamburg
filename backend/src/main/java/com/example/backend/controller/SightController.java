@@ -2,7 +2,6 @@ package com.example.backend.controller;
 import com.example.backend.model.Sight;
 import com.example.backend.service.SightService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 
