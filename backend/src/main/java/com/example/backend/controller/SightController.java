@@ -22,7 +22,7 @@ public class SightController {
         return sightService.getAllSight();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete-by-id/{id}")
     public void deleteSightById (@PathVariable String id) {
         sightService.deleteSightById(id);
     }

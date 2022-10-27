@@ -83,7 +83,7 @@ class SightControllerTest {
         sightRepo.save( new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT"));
 
         //WHEN & THEN
-        mockMvc.perform(delete("/api/sights/1"))
+        mockMvc.perform(delete("/api/sights/delete-by-id/1"))
                 .andExpect(status().is(200));
 
     }
