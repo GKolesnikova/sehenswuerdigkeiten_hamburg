@@ -16,14 +16,14 @@ export default function useSights () {
     }, [])
 
     const getAllSights = () => {
-        axios.get("/api/sights/get-all")
+        axios.get("/api/sights")
             .then(response => response.data)
             .then(data => setSights(data))
             .catch((error) => toast.error(error.message + " " + error.response.status + " " + error.response.data))
     }
 
     const deleteSightById = (id: string | undefined) => {
-        axios.delete("/api/sights/delete-by-id/" + id)
+        axios.delete("/api/sights/" + id)
             .then(() => getAllSights())
             .catch(console.error)
 

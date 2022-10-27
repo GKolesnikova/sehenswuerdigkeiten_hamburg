@@ -3,6 +3,7 @@ import com.example.backend.model.Sight;
 import com.example.backend.repo.SightRepo;
 import org.junit.jupiter.api.Test;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,6 +40,42 @@ class SightServiceTest {
 
 
     @Test
+    void getSightById_whenExists_ReturnSight() {
+        //GIVEN
+        when(sightRepo.findById("1")).thenReturn(Optional.ofNullable(new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT")));
+
+        //WHEN
+        Optional <Sight> actual = sightRepo.findById("1");
+
+        //THEN
+        Optional <Sight> expected = Optional.of(
+                new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT")
+         );
+        verify(sightRepo).findById("1");
+        assertEquals(actual, expected);
+    }
+
+
+    @Test
+    void getSightById_whenSightNotExists_throwException() {
+        // GIVEN
+        when(sightRepo.findById("1")).thenReturn( Optional.empty());
+
+        // WHEN & THEN
+        //verify(sightRepo).findById("1");
+        assertThrows(NoSuchElementException.class, () -> sightService.getSightById("1"));
+    }
+
+
+
+
+
+
+
+
+
+
+    @Test
     void deleteSight_whenSightExists () {
         //GIVEN
         when(sightRepo.findById("1")).thenReturn(Optional.ofNullable(new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT")));
@@ -47,10 +84,8 @@ class SightServiceTest {
         boolean actual = sightService.deleteSightById("1");
 
         //THEN
-        boolean expected = true;
         verify(sightRepo).deleteById("1");
-        assertTrue(sightService.deleteSightById("1"));
-        assertEquals(actual, expected);
+        assertTrue(actual);
     }
 
 
@@ -62,11 +97,8 @@ class SightServiceTest {
          boolean actual = sightService.deleteSightById("1");
 
          //THEN
-         boolean expected = false;
          verify(sightRepo, never()).deleteById("1");
-         assertFalse(sightService.deleteSightById("1"));
-         assertEquals(actual, expected);
-
+         assertFalse(actual);
      }
 
 

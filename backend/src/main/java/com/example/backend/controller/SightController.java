@@ -3,6 +3,7 @@ import com.example.backend.model.Sight;
 import com.example.backend.service.SightService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -16,14 +17,20 @@ public class SightController {
     }
 
 
-    @GetMapping("/get-all")
+    @GetMapping
     public  List<Sight> getAllSight () {
         return sightService.getAllSight();
     }
 
-    @DeleteMapping("/delete-by-id/{id}")
-    public void deleteSightById (@PathVariable String id) {
-        sightService.deleteSightById(id);
+    @GetMapping("{id}")
+    public Optional <Sight> getSightById (@PathVariable String id) {
+        return sightService.getSightById(id);
+    }
+
+
+    @DeleteMapping("{id}")
+    public boolean deleteSightById (@PathVariable String id) {
+        return sightService.deleteSightById(id);
     }
 
 
