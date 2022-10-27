@@ -119,8 +119,7 @@ class SightControllerTest {
     void getSightById_whenSightNotExists_Return404 () throws Exception {
 
         mockMvc.perform(
-                        get("/api/sights/17690")
-                 .contentType("application/json"))
+                        get("/api/sights/17690"))
                  .andExpect(status().is(404));
     }
 
