@@ -24,7 +24,7 @@ export default function useSights () {
 
 
     const getSightById = (id: string) => {
-        axios.get("/api/sights/${id}" )
+        axios.get("/api/sights/" + id)
             .then(response => response.data)
             .then(data => setSights(data))
             .catch((error) => toast.error(error.message + " " + error.response.status + " " + error.response.data))
