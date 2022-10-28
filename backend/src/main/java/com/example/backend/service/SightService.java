@@ -27,8 +27,9 @@ public class SightService {
 
 
     public Optional <Sight> getSightById (String id) {
+
             if ( !sightRepo.existsById(id) ) {
-                throw new NoSuchElementException("No Sight with id : " + id + " found.");
+                throw new NoSuchElementException ("No Sight with id : " + id + " found.");
             }
             return sightRepo.findById(id);
     }
@@ -38,7 +39,7 @@ public class SightService {
         Optional <Sight> sight = sightRepo.findById(id) ;
 
         if ( sight.isEmpty() ) {
-            System.out.println("Sight was not really! It didn't exist in the fist place.");
+            System.out.println ("Sight was not really! It didn't exist in the fist place.");
             return false;
         } else {
             sightRepo.deleteById(id);
