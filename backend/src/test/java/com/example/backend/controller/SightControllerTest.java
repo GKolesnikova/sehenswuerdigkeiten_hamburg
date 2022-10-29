@@ -2,15 +2,18 @@ package com.example.backend.controller;
 import com.example.backend.model.Sight;
 import com.example.backend.repo.SightRepo;
 import com.example.backend.service.IdService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -23,6 +26,9 @@ class SightControllerTest {
 
     @Autowired
     MockMvc mockMvc;
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Autowired
     private SightRepo sightRepo;
@@ -130,6 +136,91 @@ class SightControllerTest {
 
 
     @Test
+    void addNewSight () throws Exception {
+        // GIVEN
+        when(idService.generateID()).thenReturn("1");
+
+        // WHEN & THEN
+        mockMvc.perform(
+                        post("/api/sights")
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .content("""
+                    {                                                   
+                        "name": "AAA",
+                        "image": "BBB",
+                        "address": "CCC",
+                        "website": "DDD",
+                        "time": "EEE",
+                        "description": "HHH",
+                        "location": "TTT"                                         
+                     }               
+                """))
+                .andExpect(status().is(200))
+                .andExpect(content().json("""
+                    {
+                        "id": "1",                               
+                        "name": "AAA",
+                        "image": "BBB",
+                        "address": "CCC",
+                        "website": "DDD",
+                        "time": "EEE",
+                        "description": "HHH",
+                        "location": "TTT"                                         
+                     }               
+                """));
+    }
+
+
+    @Test
+    void addNewSight_whenSuccessful_Return200 () throws Exception {
+        // GIVEN
+        when(idService.generateID()).thenReturn("1");
+
+        // WHEN & THEN
+        mockMvc.perform(
+                        post("/api/sights")
+                .contentType("application/json")
+                .content("""
+                    {                                                   
+                        "name": "AAA",
+                        "image": "BBB",
+                        "address": "CCC",
+                        "website": "DDD",
+                        "time": "EEE",
+                        "description": "HHH",
+                        "location": "TTT"                                         
+                     }               
+                """))
+                .andExpect(status().is(200)).andReturn();
+    }
+
+
+   /*@Test
+    void addNewSight_whenMissingOneOfRequiredForm_returns400 () throws Exception {
+        // GIVEN
+        when(idService.generateID()).thenReturn("1");
+
+        // WHEN & THEN
+        mockMvc.perform(
+                        post("/api/sights")
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .content("""
+                    {       
+                        "image": "BBB",
+                        "address": "CCC",
+                        "website": "DDD",
+                        "time": "EEE",
+                        "description": "HHH",
+                        "location": "TTT"                                         
+                     }               
+                """))
+                .andExpect(status().is(400)).andReturn();
+    }*/
+
+
+
+
+    @Test
     void deleteSightById () throws Exception {
         // GIVEN
         sightRepo.save( new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT"));
@@ -140,5 +231,6 @@ class SightControllerTest {
                 .andExpect(status().is(200));
     }
 }
+
 
 

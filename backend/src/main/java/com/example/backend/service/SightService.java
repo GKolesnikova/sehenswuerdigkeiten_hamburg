@@ -1,5 +1,6 @@
 package com.example.backend.service;
 import com.example.backend.model.Sight;
+import com.example.backend.model.SightDTO;
 import com.example.backend.repo.SightRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,12 +27,37 @@ public class SightService {
     }
 
 
-    public Optional <Sight> getSightById (String id) {
+    public Sight getSightById (String id) {
+            return sightRepo.findById(id)
+                    .orElseThrow( () -> new NoSuchElementException ("No Sight with id : " + id + " found.") );
+    }
 
-            if ( !sightRepo.existsById(id) ) {
-                throw new NoSuchElementException ("No Sight with id : " + id + " found.");
-            }
-            return sightRepo.findById(id);
+
+    public Sight addNewSight (SightDTO newSightDTO) {
+
+        if ( newSightDTO.getName() == null        || newSightDTO.getName().isEmpty() ||
+             newSightDTO.getImage() == null       || newSightDTO.getImage().isEmpty() ||
+             newSightDTO.getAddress() == null     || newSightDTO.getAddress().isEmpty() ||
+             newSightDTO.getWebsite() == null     || newSightDTO.getWebsite().isEmpty() ||
+             newSightDTO.getTime() == null        || newSightDTO.getTime().isEmpty() ||
+             newSightDTO.getDescription() == null || newSightDTO.getDescription().isEmpty() ||
+             newSightDTO.getLocation() == null    || newSightDTO.getLocation().isEmpty() )
+        {
+            throw new IllegalArgumentException ("One of the required form fields is not filled. Given sight is missing mandatory name or image or address or website or time or description or location");
+        }
+
+        Sight newSight = Sight.builder()
+                .id(idService.generateID())
+                .name(newSightDTO.getName())
+                .image(newSightDTO.getImage())
+                .address(newSightDTO.getAddress())
+                .website(newSightDTO.getWebsite())
+                .time(newSightDTO.getTime())
+                .description(newSightDTO.getDescription())
+                .location(newSightDTO.getLocation())
+                .build();
+
+        return sightRepo.save(newSight);
     }
 
 
@@ -46,6 +72,4 @@ public class SightService {
             return !sightRepo.existsById(id);
         }
     }
-
-
 }

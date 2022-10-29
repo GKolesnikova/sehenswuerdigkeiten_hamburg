@@ -23,7 +23,7 @@ export default function useSights () {
     }
 
 
-    const getSightById = (id: string) => {
+    const getSightById = (id: string | undefined) => {
         axios.get("/api/sights/" + id)
             .then(response => response.data)
             .then(data => setSights(data))

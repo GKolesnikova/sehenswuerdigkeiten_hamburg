@@ -28,8 +28,18 @@ body {
 
 }
 
-.inhalt {
+.scroll-content {
+    height: 470px;
+}
 
+@media(min-width: 576px) {
+    .scroll-content {
+        height: 300px;
+    }
+}
 
-
+@media(min-width: 768px) {
+    .scroll-content {
+        height: 310px;
+    }
 }

@@ -4,7 +4,7 @@ import SightCard from "./SightCard";
 
 type SightGalleryProps = {
      sights : Sight[] ;
-    deleteSightById: (id: string | undefined) => void;
+     deleteSightById: (id: string | undefined) => void;
 
 }
 
