@@ -1,5 +1,5 @@
 import {Sight} from "../model/Sight";
-import React, {ChangeEvent, FormEvent, useState} from "react";
+import React, {ChangeEvent, FormEvent} from "react";
 import "./CreateSightPage.css";
 
 
@@ -27,6 +27,7 @@ export default function CreateSightPage (props: CreateSightProps) {
 
 
     function handleChange (changeEvent: ChangeEvent<HTMLInputElement>) {
+        console.log(changeEvent);
         setSight ( prevSight => ({
             ...prevSight,
             [changeEvent.target.name]:
@@ -109,7 +110,8 @@ export default function CreateSightPage (props: CreateSightProps) {
                      />
                 </div>
                 <div className="mb-3">
-                    <input type="text"
+                    <input style={{height: "11em"}}
+                           type="text"
                            className="form-control"
                            name="description"
                            value={newSight.description}
@@ -131,7 +133,7 @@ export default function CreateSightPage (props: CreateSightProps) {
                     />
                 </div>
                 <div className="form-check form-switch check-again">
-                    <input style={{width: "7em", height: "1.7em"}}
+                    <input style={{width: "7em", height: "1.7em", backgroundColor: "rgb(253 255 0)"}}
                            className="form-check-input"
                            name="check"
                            type="checkbox"
@@ -145,7 +147,7 @@ export default function CreateSightPage (props: CreateSightProps) {
 
 
                 <div className="d-grid gap-2">
-                     <button className="btn btn-primary" type="submit">Add</button>
+                     <button className="btn btn-primary" type="submit" style={{backgroundColor: "#12e2e7"}}>Add</button>
                 </div>
             </form>
         </div>
