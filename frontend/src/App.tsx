@@ -1,22 +1,36 @@
 import './App.css';
 import useSights from "./hooks/useSights";
 import SightGallery from "./components/SightGallery";
+import NavBar from "./components/NavBar";
+import {HashRouter, Route, Routes} from "react-router-dom";
+import Homepage from "./pages/Homepage";
+import CreateSightPage from "./pages/CreateSightPage";
 
 
 
 function App() {
 
-
-  const {sights, deleteSightById } = useSights();
-
-
+  const {sights, getAllSights, getSightById, addNewSight, deleteSightById} = useSights();
 
 
 
   return (
-    <div className="App">
-        <SightGallery sights={sights} deleteSightById={deleteSightById}/>
-    </div>
+      <div className="App">
+          <header>
+              <HashRouter>
+                  <NavBar/>
+                  <><h1>Herzlich willkommen in Hamburg!</h1></>
+
+
+                  <Routes>
+                      < Route path={"/form"} element={<CreateSightPage addNewSight={addNewSight}/>}  />
+
+                      < Route path={"/homepage"} element={<Homepage/>}  />
+                      < Route path={"/"} element={<SightGallery  sights={sights}  getAllSights={getAllSights} addNewSight={addNewSight} deleteSightById={deleteSightById}/>}  />
+                  </Routes>
+              </HashRouter>
+          </header>
+      </div>
   );
 }
 

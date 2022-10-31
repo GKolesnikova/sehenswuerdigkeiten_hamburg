@@ -1,12 +1,13 @@
 import {Sight} from "../model/Sight";
 import "./SightCard.css";
+import {Link} from "react-router-dom";
 
 
 
 type SightCardProps = {
     sight: Sight;
     deleteSightById: (id: string | undefined)  => void;
-
+    addNewSight: (newSight: Sight) => void;
 }
 
 export default function SightCard (props: SightCardProps) {
@@ -15,7 +16,13 @@ export default function SightCard (props: SightCardProps) {
         <div className={"sight-card-haupt"}>
              <div className={"sight-card"}>
                  <div className="shadow p-3 mb-5 bg-white rounded">
-                     <button onClick={() => props.deleteSightById(props.sight.id)}>Delete</button>
+
+
+                     <Link to={"/form"} >
+                     <button type="button" className="btn btn-outline-info" onClick={() => props.addNewSight(props.sight)}  >Add new Sight</button>
+                     </Link>
+
+                     <button type="button" className="btn btn-outline-warning" onClick={() => props.deleteSightById(props.sight.id)}   >Delete</button>
 
 
                      <p><h1>{props.sight.name}</h1></p>
@@ -89,6 +96,9 @@ export default function SightCard (props: SightCardProps) {
                          </div>
                      </div>
                  </div>
+
+
+
 
              </div>
         </div>

@@ -195,7 +195,7 @@ class SightControllerTest {
     }
 
 
-   /*@Test
+   @Test
     void addNewSight_whenMissingOneOfRequiredForm_returns400 () throws Exception {
         // GIVEN
         when(idService.generateID()).thenReturn("1");
@@ -215,7 +215,7 @@ class SightControllerTest {
                      }               
                 """))
                 .andExpect(status().is(400)).andReturn();
-    }*/
+    }
 
 
 

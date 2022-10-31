@@ -1,0 +1,23 @@
+.main-form {
+ padding: 10%;
+}
+
+.check-again {
+ margin-bottom: 18px;
+ }
+
+.mb-3 {
+ margin: 2.5% 0;
+}
+
+input {
+height: 47px;
+}
+
+textarea {
+ height: 15em;
+}
+
+.form-check-input {
+ width: 4em;
+}
