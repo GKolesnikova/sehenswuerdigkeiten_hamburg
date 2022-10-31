@@ -13,7 +13,6 @@ type CreateSightProps = {
 
 export default function CreateSightPage (props: CreateSightProps) {
 
-
     const [newSight, setSight] = React.useState( {
         name: "",
         image: "",
@@ -23,8 +22,6 @@ export default function CreateSightPage (props: CreateSightProps) {
         description: "",
         location: "",
     })
-
-
 
     function handleChange (changeEvent: ChangeEvent<HTMLInputElement>) {
         console.log(changeEvent);
@@ -143,8 +140,6 @@ export default function CreateSightPage (props: CreateSightProps) {
                     />
                         <label className="form-check-label" htmlFor="flexSwitchCheckDefault"><h4>Check all data again</h4></label>
                 </div>
-
-
 
                 <div className="d-grid gap-2">
                      <button className="btn btn-primary" type="submit" style={{backgroundColor: "#12e2e7"}}>Add</button>
