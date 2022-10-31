@@ -16,8 +16,8 @@ public class ControllerAdvisor {
                 .body("Element not found! Error:  " +  exception.getMessage());
     }
 
-    @ExceptionHandler(IllegalAccessException.class)
-    protected ResponseEntity<Object> handleConflict (IllegalAccessException exception) {
+    @ExceptionHandler(IllegalArgumentException.class)
+    protected ResponseEntity<Object> handleConflict (IllegalArgumentException exception) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body("Given element not processable! Error:  " +  exception.getMessage());

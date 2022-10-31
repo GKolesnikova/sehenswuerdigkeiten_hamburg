@@ -23,20 +23,27 @@ export default function useSights () {
     }
 
 
-    const getSightById = (id: string) => {
+    const getSightById = (id: string | undefined) => {
         axios.get("/api/sights/" + id)
             .then(response => response.data)
             .then(data => setSights(data))
             .catch((error) => toast.error(error.message + " " + error.response.status + " " + error.response.data))
     }
 
+    const addNewSight = (newSight: Sight) => {
+        axios.post("/api/sights", newSight)
+            .then(response => response.data)
+            .then(getAllSights)
+            .catch((error) => toast.error(error.message + " " + error.response.status + " " + error.response.data))
+    }
 
-    const deleteSightById = (id: string | undefined) => {
+
+    function deleteSightById (id: string | undefined) {
         axios.delete("/api/sights/" + id)
             .then(() => getAllSights())
             .catch(console.error)
     }
 
 
-    return {sights, getAllSights, getSightById, deleteSightById}
+    return {sights, getAllSights, getSightById, addNewSight, deleteSightById}
 }

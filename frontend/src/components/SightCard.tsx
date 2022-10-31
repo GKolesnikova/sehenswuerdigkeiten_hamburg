@@ -1,12 +1,13 @@
 import {Sight} from "../model/Sight";
 import "./SightCard.css";
+import {Link} from "react-router-dom";
 
 
 
 type SightCardProps = {
     sight: Sight;
     deleteSightById: (id: string | undefined)  => void;
-
+    addNewSight: (newSight: Sight) => void;
 }
 
 export default function SightCard (props: SightCardProps) {
@@ -15,21 +16,27 @@ export default function SightCard (props: SightCardProps) {
         <div className={"sight-card-haupt"}>
              <div className={"sight-card"}>
                  <div className="shadow p-3 mb-5 bg-white rounded">
-                     <button onClick={() => props.deleteSightById(props.sight.id)}>Delete</button>
+
+
+                     <Link to={"/form"} >
+                     <button type="button" className="btn btn-outline-info" onClick={() => props.addNewSight(props.sight)}  >Add new Sight</button>
+                     </Link>
+
+                     <button type="button" className="btn btn-outline-warning" onClick={() => props.deleteSightById(props.sight.id)}   >Delete</button>
 
 
                      <p><h1>{props.sight.name}</h1></p>
-                <img src={props.sight.image} alt={props.sight.name}/>
-                <p>Adresse: {props.sight.address}</p>
-                <p>Webseite: {props.sight.website}</p>
-                <p>Öffnungszeit: {props.sight.time}</p>
-                <p>{props.sight.description}</p>
-                <p>{props.sight.location}</p>
+                    <img src={props.sight.image} alt={props.sight.name}/>
+                    <p>Adresse: {props.sight.address}</p>
+                    <p>Webseite: {props.sight.website}</p>
+                    <p>Öffnungszeit: {props.sight.time}</p>
+                    <p>{props.sight.description}</p>
+                    <p>{props.sight.location}</p>
 
                  </div>
 
 
-                 <div className="row h-auto " style={{height: "500px"}}>
+                 <div className="row" >
 
                      <div className="col-12">
                          <h1>{props.sight.name}</h1>
@@ -56,8 +63,8 @@ export default function SightCard (props: SightCardProps) {
                          </nav>
                      </div>
 
-                     <div className="col-8 p-3 inhalt" style={{height: "800px"}}>
-                         <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" className="scrollspy-example-2 h-50 overflow-auto" tabIndex={0} style={{height: "800px"}}>
+                     <div className="col-8 p-3 " >
+                         <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" className="scrollspy-example-2 overflow-auto scroll-content" tabIndex={0} >
                              <div id="item-1">
                                  <h4>Item 1</h4>
                                  <p> {props.sight.address}</p>
@@ -89,9 +96,6 @@ export default function SightCard (props: SightCardProps) {
                          </div>
                      </div>
                  </div>
-
-
-
 
 
 
