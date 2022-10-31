@@ -34,7 +34,6 @@ export default function CreateSightPage (props: CreateSightProps) {
     }
 
 
-
     function handleSubmit (event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
 
@@ -44,7 +43,6 @@ export default function CreateSightPage (props: CreateSightProps) {
         }
         props.addNewSight(newSight);
     }
-
 
 
     return (

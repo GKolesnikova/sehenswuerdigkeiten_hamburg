@@ -1,32 +1,21 @@
 body {
-
  background:#fffbad;
-
 
  }
 
-
-
 .sight-card-haupt {
-
-
-
-
 
 }
 
 .sight-card {
 
-    margin: 5%;
+    margin: 5% 11%;
     padding:3%;
     border-radius: 50px;
     background-color: #fffb4f;
     border: 4px solid #6efafa;
-
-
-
-
 }
+
 
 .scroll-content {
     height: 470px;

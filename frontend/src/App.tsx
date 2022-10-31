@@ -19,10 +19,10 @@ function App() {
               <HashRouter>
                   <NavBar/>
                   <Routes>
-                      < Route path={"/form"} element={<CreateSightPage addNewSight={addNewSight}/>}  />
-
                       < Route path={"/homepage"} element={<Homepage/>}  />
                       < Route path={"/"} element={<SightGallery  sights={sights}  getAllSights={getAllSights} addNewSight={addNewSight} deleteSightById={deleteSightById}/>}  />
+
+                      < Route path={"/form"} element={<CreateSightPage addNewSight={addNewSight}/>}  />
                   </Routes>
               </HashRouter>
           </header>
