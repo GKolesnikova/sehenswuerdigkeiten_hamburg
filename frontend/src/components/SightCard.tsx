@@ -26,6 +26,9 @@ export default function SightCard (props: SightCardProps) {
                      <button type="button" className="btn btn-outline-warning" onClick={() => props.deleteSightById(props.sight.id)}  style={{width: "13em", height: "2.5em"}} >Delete</button>
                      </div>
 
+
+
+
                      <div className="col-12">
                          <h1>{props.sight.name}</h1>
                      </div>
@@ -73,9 +76,6 @@ export default function SightCard (props: SightCardProps) {
                          </div>
                      </div>
                  </div>
-
-
-
 
              </div>
         </div>

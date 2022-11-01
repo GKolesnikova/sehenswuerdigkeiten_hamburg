@@ -12,7 +12,7 @@ export default function NavBar () {
                     <a className="nav-link" href="/" style={{color: "#0d6efd", fontSize:"1.2em"}}>Sights</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#" style={{color: "#0d6efd", fontSize:"1.2em"}}>Link</a>
+                    <a className="nav-link" href="/" style={{color: "#0d6efd", fontSize:"1.2em"}}>Link</a>
                 </li>
             </ul>
 

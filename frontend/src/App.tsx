@@ -10,7 +10,7 @@ import CreateSightPage from "./pages/CreateSightPage";
 
 function App() {
 
-  const {sights, getAllSights, getSightById, addNewSight, deleteSightById} = useSights();
+  const {sights, getAllSights, addNewSight, deleteSightById} = useSights();
 
 
   return (
