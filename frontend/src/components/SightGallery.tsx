@@ -1,5 +1,7 @@
 import {Sight} from "../model/Sight";
 import SightCard from "./SightCard";
+import {useState} from "react";
+
 
 
 type SightGalleryProps = {
@@ -7,17 +9,27 @@ type SightGalleryProps = {
      getAllSights: () => void;
      addNewSight: (newSight: Sight) => void;
      deleteSightById: (id: string | undefined) => void;
-
 }
 
 export default function SightGallery (props: SightGalleryProps) {
 
+     const [filterText, setFilterText] = useState("");
+     const filteredSights = props.sights.filter((sight) => sight.name.toLowerCase().includes(filterText.toLowerCase()));
+
+
      return (
-         <div>
-             {props.sights.length < 1 ?
+         <div >
+             <div className="mb-3" style= {{padding: "2% 12% 0 12%"}}>
+                 <label htmlFor="exampleInputEmail1" className="form-label" ><h3>Enter the name of the sight</h3></label>
+                 <input onChange={(event) => setFilterText(event.target.value)} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style= {{border: "4px solid #6cf9f9"}}/>
+                 <label style= {{paddingTop: "1.5%", color: "rgb(255 163 1)"}} htmlFor="exampleInputEmail1" className="form-label">You are looking for <h5 >{filterText}</h5></label>
+             </div>
+
+
+             {filteredSights.length < 1 ?
              <h1>Keine Sehenswürdigkeiten vorhanden</h1>
              :
-             props.sights.map((sight) =>
+                 filteredSights.map((sight) =>
                  <SightCard sight={sight} addNewSight={props.addNewSight} deleteSightById={props.deleteSightById}/>)
              }
          </div>

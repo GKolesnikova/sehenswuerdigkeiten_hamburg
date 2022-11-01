@@ -13,20 +13,16 @@ function App() {
   const {sights, getAllSights, getSightById, addNewSight, deleteSightById} = useSights();
 
 
-
   return (
       <div className="App">
           <header>
               <HashRouter>
                   <NavBar/>
-                  <><h1>Herzlich willkommen in Hamburg!</h1></>
-
-
                   <Routes>
-                      < Route path={"/form"} element={<CreateSightPage addNewSight={addNewSight}/>}  />
-
                       < Route path={"/homepage"} element={<Homepage/>}  />
                       < Route path={"/"} element={<SightGallery  sights={sights}  getAllSights={getAllSights} addNewSight={addNewSight} deleteSightById={deleteSightById}/>}  />
+
+                      < Route path={"/form"} element={<CreateSightPage addNewSight={addNewSight}/>}  />
                   </Routes>
               </HashRouter>
           </header>

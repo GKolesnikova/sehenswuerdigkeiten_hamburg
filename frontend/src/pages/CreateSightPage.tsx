@@ -1,5 +1,5 @@
 import {Sight} from "../model/Sight";
-import React, {ChangeEvent, FormEvent, useState} from "react";
+import React, {ChangeEvent, FormEvent} from "react";
 import "./CreateSightPage.css";
 
 
@@ -13,7 +13,6 @@ type CreateSightProps = {
 
 export default function CreateSightPage (props: CreateSightProps) {
 
-
     const [newSight, setSight] = React.useState( {
         name: "",
         image: "",
@@ -24,9 +23,8 @@ export default function CreateSightPage (props: CreateSightProps) {
         location: "",
     })
 
-
-
     function handleChange (changeEvent: ChangeEvent<HTMLInputElement>) {
+        console.log(changeEvent);
         setSight ( prevSight => ({
             ...prevSight,
             [changeEvent.target.name]:
@@ -34,7 +32,6 @@ export default function CreateSightPage (props: CreateSightProps) {
                     : changeEvent.target.value
         }))
     }
-
 
 
     function handleSubmit (event: FormEvent<HTMLFormElement>) {
@@ -46,7 +43,6 @@ export default function CreateSightPage (props: CreateSightProps) {
         }
         props.addNewSight(newSight);
     }
-
 
 
     return (
@@ -109,7 +105,8 @@ export default function CreateSightPage (props: CreateSightProps) {
                      />
                 </div>
                 <div className="mb-3">
-                    <input type="text"
+                    <input style={{height: "11em"}}
+                           type="text"
                            className="form-control"
                            name="description"
                            value={newSight.description}
@@ -131,7 +128,7 @@ export default function CreateSightPage (props: CreateSightProps) {
                     />
                 </div>
                 <div className="form-check form-switch check-again">
-                    <input style={{width: "7em", height: "1.7em"}}
+                    <input style={{width: "7em", height: "1.7em", backgroundColor: "rgb(253 255 0)"}}
                            className="form-check-input"
                            name="check"
                            type="checkbox"
@@ -142,10 +139,8 @@ export default function CreateSightPage (props: CreateSightProps) {
                         <label className="form-check-label" htmlFor="flexSwitchCheckDefault"><h4>Check all data again</h4></label>
                 </div>
 
-
-
                 <div className="d-grid gap-2">
-                     <button className="btn btn-primary" type="submit">Add</button>
+                     <button className="btn btn-primary" type="submit" style={{backgroundColor: "#12e2e7"}}>Add</button>
                 </div>
             </form>
         </div>
