@@ -7,8 +7,6 @@ import {useState} from "react";
 type SightGalleryProps = {
      sights : Sight[] ;
      getAllSights: () => void;
-     addNewSight: (newSight: Sight) => void;
-     deleteSightById: (id: string | undefined) => void;
 }
 
 export default function SightGallery (props: SightGalleryProps) {
@@ -30,7 +28,7 @@ export default function SightGallery (props: SightGalleryProps) {
              <h1>Keine Sehenswürdigkeiten vorhanden</h1>
              :
                  filteredSights.map((sight) =>
-                 <SightCard sight={sight} addNewSight={props.addNewSight} deleteSightById={props.deleteSightById}/>)
+                 <SightCard sight={sight} sights={props.sights}   />)
              }
          </div>
      )

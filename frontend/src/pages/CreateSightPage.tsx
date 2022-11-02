@@ -4,8 +4,6 @@ import "./CreateSightPage.css";
 
 
 
-
-
 type CreateSightProps = {
 
     addNewSight: (newSight: Sight) => void;

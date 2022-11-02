@@ -27,13 +27,13 @@ public class SightService {
     }
 
 
-    public Sight getSightById (String id) {
+    public Sight getSightById (String id) throws NoSuchElementException {
             return sightRepo.findById(id)
                     .orElseThrow( () -> new NoSuchElementException ("No Sight with id : " + id + " found.") );
     }
 
 
-    public Sight addNewSight (SightDTO newSightDTO) {
+    public Sight addNewSight (SightDTO newSightDTO) throws IllegalArgumentException {
 
         if ( newSightDTO.getName() == null        || newSightDTO.getName().isEmpty() ||
              newSightDTO.getImage() == null       || newSightDTO.getImage().isEmpty() ||
@@ -61,6 +61,15 @@ public class SightService {
     }
 
 
+    public Sight updateSight (String id, Sight sight) throws NoSuchElementException {
+
+        if ( !sightRepo.existsById(id) ) {
+            throw new NoSuchElementException ("No Sight with id : " + id + " found.");
+        }
+        return sightRepo.save(sight);
+    }
+
+
     public boolean deleteSightById (String id) {
         Optional <Sight> sight = sightRepo.findById(id) ;
 
@@ -72,4 +81,5 @@ public class SightService {
             return !sightRepo.existsById(id);
         }
     }
+
 }

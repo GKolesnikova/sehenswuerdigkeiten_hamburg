@@ -96,6 +96,23 @@ class SightServiceTest {
 
 
     @Test
+    void updateSight_returnUpdatedSight () {
+        // GIVEN
+        Sight sight1 = new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT");
+        when(sightRepo.save(sight1)).thenReturn(sight1);
+        when(sightRepo.existsById("1")).thenReturn(true);
+
+        // WHEN
+        Sight actual = sightService.updateSight("1", sight1);
+
+        // THEN
+        verify(sightRepo).save(sight1);
+        assertEquals(sight1, actual);
+    }
+
+
+
+    @Test
     void deleteSight_whenSightExists () {
         // GIVEN
         when(sightRepo.findById("1")).thenReturn(Optional.ofNullable(new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT")));
