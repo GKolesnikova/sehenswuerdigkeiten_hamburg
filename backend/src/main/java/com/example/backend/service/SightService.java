@@ -27,13 +27,13 @@ public class SightService {
     }
 
 
-    public Sight getSightById (String id) throws NoSuchElementException {
+    public Sight getSightById (String id)  {
             return sightRepo.findById(id)
                     .orElseThrow( () -> new NoSuchElementException ("No Sight with id : " + id + " found.") );
     }
 
 
-    public Sight addNewSight (SightDTO newSightDTO) throws IllegalArgumentException {
+    public Sight addNewSight (SightDTO newSightDTO)   {
 
         if ( newSightDTO.getName() == null        || newSightDTO.getName().isEmpty() ||
              newSightDTO.getImage() == null       || newSightDTO.getImage().isEmpty() ||

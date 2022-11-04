@@ -19,7 +19,7 @@ export default function useSights () {
         axios.get("/api/sights")
              .then(response => response.data)
              .then(data => setSights(data))
-             .catch((error) => toast.error(error.message + " " + error.response.status + " " + error.response.data))
+             .catch(console.error)
     }
 
 
@@ -33,22 +33,27 @@ export default function useSights () {
     const addNewSight = (newSight: Sight) => {
         axios.post("/api/sights", newSight)
              .then(response => response.data)
-             .then(getAllSights)
+             .then(() => toast.success("Sight added to database"))
              .catch((error) => toast.error(error.message + " " + error.response.status + " " + error.response.data))
+             .then(getAllSights)
     }
 
     const updateSight = (id: string | undefined, sight: Sight) => {
         axios.put("/api/sights/" + id, sight)
              .then(response => response.data)
-             .then(getAllSights)
+             .then(() => toast.success("Sight updated to database"))
              .catch((error) => toast.error(error.message + " " + error.response.status + " " + error.response.data))
+             .then(getAllSights)
     }
 
 
     function deleteSightById (id: string | undefined) {
         axios.delete("/api/sights/" + id)
-             .then(() => getAllSights())
+             .then(() => toast.success("Sight deleted"))
              .catch(console.error)
+             .then(() => getAllSights())
+             .catch((error) => toast.error(error.message + " " + error.response.status + " " + error.response.data))
+
     }
 
 

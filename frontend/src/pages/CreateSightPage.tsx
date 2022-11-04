@@ -1,6 +1,7 @@
 import {Sight} from "../model/Sight";
 import React, {ChangeEvent, FormEvent} from "react";
 import "./CreateSightPage.css";
+import {useNavigate} from "react-router-dom";
 
 
 
@@ -10,6 +11,8 @@ type CreateSightProps = {
 }
 
 export default function CreateSightPage (props: CreateSightProps) {
+    const navigate = useNavigate()
+
 
     const [newSight, setSight] = React.useState( {
         name: "",
@@ -40,6 +43,7 @@ export default function CreateSightPage (props: CreateSightProps) {
             return
         }
         props.addNewSight(newSight);
+        navigate ('/');
     }
 
 

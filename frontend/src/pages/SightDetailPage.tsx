@@ -1,5 +1,5 @@
 import {Sight} from "../model/Sight";
-import {Link, UNSAFE_DataRouterStateContext, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import React from "react";
 import UpdateSight from "../components/UpdateSight";
 
@@ -13,6 +13,7 @@ type SightDetailPageProps = {
 }
 
 export default function SightDetailPage (props: SightDetailPageProps) {
+    const navigate = useNavigate()
 
     const params = useParams();
     const id = params.id;
@@ -28,6 +29,16 @@ export default function SightDetailPage (props: SightDetailPageProps) {
         return (<>"Sorry! No Sight found!"</>);
     }
 
+
+
+    const onDelete = (id: string | undefined) => {
+        props.deleteSightById(id);
+        navigate ('/');
+
+    }
+
+
+
     return (
         <div>
             <Link to={"/"}>
@@ -39,7 +50,7 @@ export default function SightDetailPage (props: SightDetailPageProps) {
                 <div  className="d-flex justify-content-around " >
                     <button type="button" className="btn btn-outline-info" data-bs-toggle="modal"   data-bs-target="#exampleModal"   style={{width: "13em", height: "2.5em"}} >Update</button>
                     <UpdateSight sight={props.sight} sights={props.sights} updateSight={props.updateSight}/>
-                    <button type="button" className="btn btn-outline-warning" onClick={() => props.deleteSightById(params.id)}  style={{width: "13em", height: "2.5em"}} >Delete</button>
+                    <button type="button" className="btn btn-outline-warning" onClick={() => onDelete(params.id)}  style={{width: "13em", height: "2.5em"}} >Delete</button>
                 </div>
 
 

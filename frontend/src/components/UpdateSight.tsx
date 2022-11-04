@@ -1,5 +1,5 @@
 import {Sight} from "../model/Sight";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import React, {FormEvent, useState} from "react";
 
 
@@ -8,7 +8,6 @@ type UpdateSightProps = {
     sight: Sight;
     sights: Sight[];
     updateSight: (id: string | undefined, sight: Sight)  => void;
-
 
 }
 
@@ -41,7 +40,6 @@ export default function UpdateSight (props: UpdateSightProps) {
 
 
 
-
     const handleSubmit = (event : FormEvent ) => {
 
         event.preventDefault();
@@ -52,6 +50,7 @@ export default function UpdateSight (props: UpdateSightProps) {
         }
 
         const updatedSight: Sight = {
+            id: id,
             name : updatedName,
             image: updatedImage,
             address: updatedAddress,
@@ -61,19 +60,15 @@ export default function UpdateSight (props: UpdateSightProps) {
             location: updatedLocation
         }
 
+
         setSight(updatedSight);
         props.updateSight(id, updatedSight);
-
     }
 
 return (
     <div>
-
-
-
-
-        <div className="modal fade" id="exampleModal" tabIndex= {-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog modal-dialog-scrollable">
+         <div className="modal fade" id="exampleModal" tabIndex= {-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog modal-xl modal-dialog-scrollable">
                 <div className="modal-content">
                     <div className="modal-header">
                         <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
@@ -85,7 +80,7 @@ return (
                                 <input type="text"
                                        className="form-control"
                                        name="name"
-                                       value={updatedName}
+                                       defaultValue={updatedName}
                                        id="exampleFormControlInput1"
                                        placeholder="name"
                                        required={true}
