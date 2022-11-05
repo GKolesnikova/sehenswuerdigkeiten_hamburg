@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom";
 import React, {FormEvent, useState} from "react";
 
 
+
 type UpdateSightProps = {
     sights: Sight[];
     updateSight: (id: string | undefined, sight: Sight)  => void;
@@ -62,18 +63,6 @@ export default function UpdateSight (props: UpdateSightProps) {
 
         setSight(updatedSight);
         props.updateSight(id, updatedSight);
-        //window.location.reload()
-
-
-       var myModal = document.getElementById('exampleModal');
-        if (myModal !== null) {
-            myModal.classList.remove("show");
-            myModal.classList.remove("modal-backdrop");
-            console.log(myModal);
-
-        }
-
-
 
     }
 
