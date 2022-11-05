@@ -33,7 +33,7 @@ function App() {
                   <Routes>
                       < Route path={"/homepage"} element={<Homepage/>}  />
                       < Route path={"/"} element={<SightGallery  sights={sights}  getAllSights={getAllSights}    />}  />
-                      < Route path={"/sights/:id"} element={<SightDetailPage  sight={sight}  sights={sights}  updateSight={updateSight}  deleteSightById={deleteSightById}/>}  />
+                      < Route path={"/sights/:id"} element={<SightDetailPage  sights={sights}  updateSight={updateSight}  deleteSightById={deleteSightById}/>}  />
 
                       < Route path={"/form"} element={<CreateSightPage addNewSight={addNewSight}/>}  />
                   </Routes>

@@ -1,17 +1,17 @@
 import {Sight} from "../model/Sight";
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import React, {FormEvent, useState} from "react";
 
 
 
 type UpdateSightProps = {
-    sight: Sight;
     sights: Sight[];
     updateSight: (id: string | undefined, sight: Sight)  => void;
 
 }
 
 export default function UpdateSight (props: UpdateSightProps) {
+
 
     const params = useParams();
     const id = params.id;
@@ -154,10 +154,6 @@ return (
                                        onChange={(event) => setUpdatedLocation(event.target.value)}
                                 />
                             </div>
-
-
-
-
                         </form>
                     </div>
                     <div className="modal-footer">

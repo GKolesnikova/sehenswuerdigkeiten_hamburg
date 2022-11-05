@@ -17,23 +17,26 @@ export default function SightCard (props: SightCardProps) {
                  <div className="shadow p-3 mb-5 bg-white rounded">
 
                      <div  className="d-flex justify-content-around " >
-
                          <Link to={"/sights/" + props.sight.id} >
                              <button type="button" className="btn btn-outline-info" data-bs-toggle="modal"   data-bs-target="#update-sight-form" style={{width: "13em", height: "2.5em"}} >Details</button>
                          </Link>
-
-
                      </div>
-
-
-
 
                      <div className="col-12">
                          <h1>{props.sight.name}</h1>
                      </div>
                      <div className="col-12">
+                         <Link to={"/sights/" + props.sight.id} >
                          <img className="w-100" src={props.sight.image} alt={props.sight.name}/>
+                         </Link>
                      </div>
+
+
+
+
+
+
+
 
                  </div>
 
@@ -61,8 +64,6 @@ export default function SightCard (props: SightCardProps) {
                             </div>
                         </div>
                  </div>
-
-
 
              </div>
         </div>
