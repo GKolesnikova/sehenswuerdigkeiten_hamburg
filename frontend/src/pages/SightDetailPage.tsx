@@ -1,5 +1,5 @@
 import {Sight} from "../model/Sight";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import React from "react";
 import UpdateSight from "../components/UpdateSight";
 import DeleteSight from "./DeleteSight";
@@ -17,7 +17,6 @@ type SightDetailPageProps = {
 }
 
 export default function SightDetailPage (props: SightDetailPageProps) {
-    const navigate = useNavigate()
 
     const params = useParams();
     const id = params.id;
@@ -30,49 +29,48 @@ export default function SightDetailPage (props: SightDetailPageProps) {
     const findSight = props.sights.find((sight) => sight.id === id );
 
     if ( findSight === undefined ) {
-        return (<>"Sorry! No Sight found!"</>);
+        return (
+            <div>
+                    <div style={{color: "rgb(255 163 1)", textDecoration: "none"}}><h4>"Sorry! No Sight found!"</h4></div>
+                    <div>
+                        <a href={"/"} style={{color: "rgb(255 163 1)", textDecoration: "none"}}><h1>Zurück zur Galerie</h1></a>
+                    </div>
+                </div>
+        );
     }
-
-
-    const onDelete = (id: string | undefined) => {
-        props.deleteSightById(id);
-        navigate ('/');
-    }
-
-
 
 
 
     return (
         <div>
-
-
-
             <div className="shadow p-5 mb-5 bg-white rounded ">
-                <div  className="d-flex justify-content-around " >
-                    <Link to={"/"}>
-                        <button type="button" className="btn btn-outline-success" style={{width: "13em", height: "2.5em"}}>
-                              <ReplyIcon size={24} /> Back</button>
-                    </Link>
+                <div  className="row d-flex justify-content-around " >
+                    <div className= "col-4">
+                        <Link to={"/"}>
+                            <button type="button" className="btn btn-outline-success" style={{width: "13em", height: "2.5em"}}>
+                                  <ReplyIcon size={24} /> Back</button>
+                        </Link>
+                    </div>
 
+                    <div className= "col-4">
+                        <button type="button" className="btn btn-outline-info" data-bs-toggle="modal"   data-bs-target="#exampleModal"   style={{width: "13em", height: "2.5em"}} >
+                            <i className="bi bi-pencil-square" style={{ marginRight: "10px"}}></i>Update</button>
+                        <UpdateSight sights={props.sights} updateSight={props.updateSight}/>
+                    </div>
 
-                    <button type="button" className="btn btn-outline-info" data-bs-toggle="modal"   data-bs-target="#exampleModal"   style={{width: "13em", height: "2.5em"}} >
-                        <i className="bi bi-pencil-square" style={{ marginRight: "10px"}}></i>Update</button>
-                    <UpdateSight sights={props.sights} updateSight={props.updateSight}/>
-
-
-                    <DeleteSight sight={findSight}  deleteSightById={props.deleteSightById}  />
-                    <button type="button" className="btn btn-outline-warning" onClick={() => onDelete(params.id)} style={{width: "13em", height: "2.5em"}} >
-                        <i className="bi bi-trash3" style={{ marginRight: "10px"}}></i>Delete</button>
+                    <div className= "col-4">
+                        <DeleteSight sight={findSight}  deleteSightById={props.deleteSightById}  />
+                        <button type="button" className="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style={{width: "13em", height: "2.5em"}}>
+                            <i className="bi bi-trash3" style={{ marginRight: "10px"}}></i>Delete
+                        </button>
+                    </div>
                 </div>
 
 
                 <div className="col-12">
                     <h1>{findSight.name}</h1>
                 </div>
-                <div className="col-12">
-                    <img className="w-100" src={findSight.image} alt={findSight.name}/>
-                </div>
+
 
 
 
@@ -110,16 +108,15 @@ export default function SightDetailPage (props: SightDetailPageProps) {
                     </button>
                 </div>
 
-
-
-
-
             </div>
 
 
             <div className="row" >
                      <div className="col-12 p-3 " >
-
+                         <div >
+                             <h4>Foto1</h4>
+                             <img className="w-100" src={findSight.image1} alt={findSight.name}/>
+                         </div>
 
                         <h4>Adresse</h4>
                         <p> {findSight.address}</p>
@@ -142,11 +139,13 @@ export default function SightDetailPage (props: SightDetailPageProps) {
 
             <div className="shadow p-3 mb-5 bg-white rounded">
                 <div className="row ">
-                    <div className={"col-12"}>
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2369.861405521715!2d9.982204300000001!3d53.560241500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b18f3decfe099d%3A0x4342a16041772e5c!2z0JPQsNC80LHRg9GA0LPRgdC60LjQuSDQsdC-0YLQsNC90LjRh9C10YHQutC40Lkg0YHQsNC0ICjQn9C70LDQvdGC0LXQvS3Rg9C9LdCR0LvQvtC80LXQvSk!5e0!3m2!1sru!2sde!4v1667595420384!5m2!1sru!2sde"
-                        height="600" style={{border: "0", width: "inherit"}}   loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"></iframe>
+                    <div className={"d-flex justify-content-center col-12"}>
+                        <div className={"col-11"}>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2369.861405521715!2d9.982204300000001!3d53.560241500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b18f3decfe099d%3A0x4342a16041772e5c!2z0JPQsNC80LHRg9GA0LPRgdC60LjQuSDQsdC-0YLQsNC90LjRh9C10YHQutC40Lkg0YHQsNC0ICjQn9C70LDQvdGC0LXQvS3Rg9C9LdCR0LvQvtC80LXQvSk!5e0!3m2!1sru!2sde!4v1667595420384!5m2!1sru!2sde"
+                            height="600" style={{border: "0", width: "inherit"}}   loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -2,9 +2,7 @@ package com.example.backend.service;
 import com.example.backend.model.FavoriteList;
 import com.example.backend.repo.FavoriteListRepo;
 import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 
 @Service
@@ -38,12 +36,10 @@ public class FavoriteListService {
         FavoriteList favoriteList;
 
         if ( optionalFavoriteList.isEmpty() ) {
-              favoriteList = new FavoriteList();
-            /*Моя ЛЮБИМАЯ ЗАЙКА!!! Я ТЕБЯ БЕЗУМНО БЕЗУМНО ОСОЗНАННО ОБОЖАЮ И ЛЮБЛЮ МОЕГО ЦЫПЛЕНКА!!!!!!*/
+            favoriteList = new FavoriteList();
         } else {
               favoriteList = optionalFavoriteList.get();
         }
-
         List<String> favoriteSights = favoriteList.getFavoriteSights();
 
         if (  favoriteSights.contains(sightId) ) {

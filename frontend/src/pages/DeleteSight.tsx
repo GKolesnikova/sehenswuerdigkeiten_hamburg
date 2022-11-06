@@ -1,4 +1,6 @@
 import {Sight} from "../model/Sight";
+import {useNavigate} from "react-router-dom";
+import React from "react";
 
 
 
@@ -9,80 +11,36 @@ type DeleteSightProps = {
 
 export default function DeleteSight (props: DeleteSightProps) {
 
+    const navigate = useNavigate();
+
+    const onDelete = () => {
+        props.deleteSightById(props.sight.id);
+        //navigate ('/');
+        window.location.reload()
+
+    }
+
+
+
 return (
     <div>
-
-    <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-         tabIndex= {-1}>
-        <div className="modal-dialog modal-dialog-centered">
-            <div className="modal-content">
-                <div className="modal-header">
-                    <h1 className="modal-title fs-5" id="exampleModalToggleLabel">Delete {props.sight.name}</h1>
-                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div className="modal-body">
-                    Are you sure you want to delete  {props.sight.name} ?
-                </div>
-                <div className="modal-footer">
-                    <button className="btn btn-primary" data-bs-target="#exampleModalToggle2"
-                            data-bs-toggle="modal">Open second modal
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
-         tabIndex={-1}>
-        <div className="modal-dialog modal-dialog-centered">
-            <div className="modal-content">
-                <div className="modal-header">
-                    <h1 className="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
-                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div className="modal-body">
-                    Hide this modal and show the first with the button below.
-                </div>
-                <div className="modal-footer">
-                    <button className="btn btn-primary"  >Back
-                        to first
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a className="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Delete</a>
-
-
-
-
-
-
-
-        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Delete
-        </button>
-
-
         <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex= {-1} aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h1 className="modal-title fs-5" id="staticBackdropLabel">Delete {props.sight.name} </h1>
+                        <h1 className="modal-title fs-5" id="staticBackdropLabel" style={{color: "rgb(255 112 0)"}}> Delete Sight </h1>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
-                        Are you sure you want to delete {props.sight.name}?
+                        Are you sure you want to delete <h5>"{props.sight.name}" ?</h5> 10 more seconds to think ...
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary">Understood</button>
+                        <button type="button" className="btn btn-outline-warning" onClick={onDelete}  ><i className="bi bi-trash3" style={{ marginRight: "10px"}}></i>Confirm Deletion</button>
+                        <button type="button" className="btn  btn-outline-success" data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 )
-
-
 }

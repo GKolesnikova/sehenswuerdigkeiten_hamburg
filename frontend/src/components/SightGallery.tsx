@@ -16,7 +16,7 @@ export default function SightGallery (props: SightGalleryProps) {
 
 
      return (
-         <div >
+         <div>
              <div className="mb-3" style= {{padding: "2% 12% 0 12%"}}>
                  <label htmlFor="exampleInputEmail1" className="form-label" ><h3>Enter the name of the sight</h3></label>
                  <input onChange={(event) => setFilterText(event.target.value)} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style= {{border: "4px solid #6cf9f9", borderRadius: "21rem "}}/>
@@ -28,7 +28,7 @@ export default function SightGallery (props: SightGalleryProps) {
              <h1>Keine Sehenswürdigkeiten vorhanden</h1>
              :
                  filteredSights.map((sight) =>
-                 <SightCard sight={sight} sights={props.sights}   />)
+                 <SightCard key={sight.id} sight={sight} sights={props.sights}   />)
              }
          </div>
      )

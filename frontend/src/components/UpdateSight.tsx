@@ -1,5 +1,5 @@
 import {Sight} from "../model/Sight";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import React, {FormEvent, useState} from "react";
 
 
@@ -11,6 +11,7 @@ type UpdateSightProps = {
 
 export default function UpdateSight (props: UpdateSightProps) {
 
+    const navigate = useNavigate()
 
     const params = useParams();
     const id = params.id;
@@ -21,7 +22,9 @@ export default function UpdateSight (props: UpdateSightProps) {
     const [sight, setSight] = useState(findSight);
 
     const [updatedName, setUpdatedName] = useState( findSight  ?  findSight.name : "" );
-    const [updatedImage, setUpdatedImage] = useState(findSight  ?  findSight.image : "" );
+    const [updatedImage1, setUpdatedImage1] = useState(findSight  ?  findSight.image1 : "" );
+    const [updatedImage2, setUpdatedImage2] = useState(findSight  ?  findSight.image2 : "" );
+    const [updatedImage3, setUpdatedImage3] = useState(findSight  ?  findSight.image3 : "" );
     const [updatedAddress, setUpdatedAddress] = useState(findSight  ?  findSight.address : "" );
     const [updatedWebsite, setUpdatedWebsite] = useState(findSight  ?  findSight.website : "" );
     const [updatedTime, setUpdatedTime] = useState(findSight  ?   findSight.time : "" );
@@ -43,7 +46,7 @@ export default function UpdateSight (props: UpdateSightProps) {
 
         event.preventDefault();
 
-        if ( !updatedName || !updatedImage || !updatedAddress || !updatedWebsite || !updatedTime || !updatedDescription || !updatedLocation ) {
+        if ( !updatedName || !updatedImage1 || !updatedImage2 || !updatedImage3 || !updatedAddress || !updatedWebsite || !updatedTime || !updatedDescription || !updatedLocation ) {
             alert (`Please fill sight name, image, address, website, time, description, location.`)
             return
         }
@@ -51,7 +54,9 @@ export default function UpdateSight (props: UpdateSightProps) {
         const updatedSight: Sight = {
             id: id,
             name : updatedName,
-            image: updatedImage,
+            image1: updatedImage1,
+            image2: updatedImage2,
+            image3: updatedImage3,
             address: updatedAddress,
             website: updatedWebsite,
             time: updatedTime,
@@ -62,17 +67,7 @@ export default function UpdateSight (props: UpdateSightProps) {
 
         setSight(updatedSight);
         props.updateSight(id, updatedSight);
-        //window.location.reload()
-
-
-       var myModal = document.getElementById('exampleModal');
-        if (myModal !== null) {
-            myModal.classList.remove("show");
-            myModal.classList.remove("modal-backdrop");
-            console.log(myModal);
-
-        }
-
+        window.location.reload()
 
 
     }
@@ -102,12 +97,34 @@ return (
                             <div className="mb-3">
                                 <input type="text"
                                        className="form-control"
-                                       name="image"
-                                       value={updatedImage}
+                                       name="image1"
+                                       value={updatedImage1}
                                        id="exampleFormControlInput1"
-                                       placeholder="image"
+                                       placeholder="image1"
                                        required={true}
-                                       onChange={(event) => setUpdatedImage(event.target.value)}
+                                       onChange={(event) => setUpdatedImage1(event.target.value)}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <input type="text"
+                                       className="form-control"
+                                       name="image2"
+                                       value={updatedImage2}
+                                       id="exampleFormControlInput1"
+                                       placeholder="image2"
+                                       required={true}
+                                       onChange={(event) => setUpdatedImage2(event.target.value)}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <input type="text"
+                                       className="form-control"
+                                       name="image3"
+                                       value={updatedImage3}
+                                       id="exampleFormControlInput1"
+                                       placeholder="image3"
+                                       required={true}
+                                       onChange={(event) => setUpdatedImage3(event.target.value)}
                                 />
                             </div>
                             <div className="mb-3">

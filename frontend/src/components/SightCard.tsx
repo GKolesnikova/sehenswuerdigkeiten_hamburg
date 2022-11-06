@@ -11,33 +11,33 @@ type SightCardProps = {
 
 export default function SightCard (props: SightCardProps) {
 
+
+
     return (
         <div className={"sight-card-haupt"}>
              <div className={"sight-card"}>
                  <div className="shadow p-3 mb-5 bg-white rounded">
 
-                     <div  className="d-flex justify-content-around " >
-                         <Link to={"/sights/" + props.sight.id} >
-                             <button type="button" className="btn btn-outline-info" data-bs-toggle="modal"   data-bs-target="#update-sight-form" style={{width: "13em", height: "2.5em"}} >Details</button>
-                         </Link>
-                     </div>
+                     <div  className="row d-flex justify-content-around " >
+                         <div className= "col-4"></div>
+                         <div className= "col-4">
+                             <Link to={"/sights/" + props.sight.id} >
+                                 <button type="button" className="btn btn-outline-info" data-bs-toggle="modal"   data-bs-target="#update-sight-form" style={{width: "13em", height: "2.5em"}} >Details</button>
+                             </Link>
+                         </div>
+                         <div className= "col-4" style={{textAlign: "right", cursor: "pointer" }}>
+                           <i className="bi bi-star-fill favorite active " ></i>
+                         </div>
+                    </div>
 
                      <div className="col-12">
                          <h1>{props.sight.name}</h1>
                      </div>
                      <div className="col-12">
                          <Link to={"/sights/" + props.sight.id} >
-                         <img className="w-100" src={props.sight.image} alt={props.sight.name}/>
+                         <img className="w-100" src={props.sight.image1} alt={props.sight.name}/>
                          </Link>
                      </div>
-
-
-
-
-
-
-
-
                  </div>
 
 

@@ -16,6 +16,15 @@ body {
     border: 4px solid #6efafa;
 }
 
+i.favorite {
+    font-size: 35px;
+    color: white;
+    -webkit-text-stroke: 2px #3bcbcb;
+}
+
+i.favorite.active {
+    color: #fffb4f;
+}
 
 .scroll-content {
     height: 470px;

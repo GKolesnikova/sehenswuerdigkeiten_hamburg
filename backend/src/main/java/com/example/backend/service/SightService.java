@@ -35,21 +35,25 @@ public class SightService {
 
     public Sight addNewSight (SightDTO newSightDTO)   {
 
-        if ( newSightDTO.getName() == null        || newSightDTO.getName().isEmpty() ||
-             newSightDTO.getImage() == null       || newSightDTO.getImage().isEmpty() ||
-             newSightDTO.getAddress() == null     || newSightDTO.getAddress().isEmpty() ||
-             newSightDTO.getWebsite() == null     || newSightDTO.getWebsite().isEmpty() ||
-             newSightDTO.getTime() == null        || newSightDTO.getTime().isEmpty() ||
+        if ( newSightDTO.getName()        == null || newSightDTO.getName().isEmpty() ||
+             newSightDTO.getImage1()      == null || newSightDTO.getImage1().isEmpty() ||
+             newSightDTO.getImage2()      == null || newSightDTO.getImage2().isEmpty() ||
+             newSightDTO.getImage3()      == null || newSightDTO.getImage3().isEmpty() ||
+             newSightDTO.getAddress()     == null || newSightDTO.getAddress().isEmpty() ||
+             newSightDTO.getWebsite()     == null || newSightDTO.getWebsite().isEmpty() ||
+             newSightDTO.getTime()        == null || newSightDTO.getTime().isEmpty() ||
              newSightDTO.getDescription() == null || newSightDTO.getDescription().isEmpty() ||
-             newSightDTO.getLocation() == null    || newSightDTO.getLocation().isEmpty() )
+             newSightDTO.getLocation()    == null || newSightDTO.getLocation().isEmpty() )
         {
-            throw new IllegalArgumentException ("One of the required form fields is not filled. Given sight is missing mandatory name or image or address or website or time or description or location");
+            throw new IllegalArgumentException ("One of the required form fields is not filled. Given sight is missing mandatory name or image1 or image2 or image3 or address or website or time or description or location");
         }
 
         Sight newSight = Sight.builder()
                 .id(idService.generateID())
                 .name(newSightDTO.getName())
-                .image(newSightDTO.getImage())
+                .image1(newSightDTO.getImage1())
+                .image2(newSightDTO.getImage2())
+                .image3(newSightDTO.getImage3())
                 .address(newSightDTO.getAddress())
                 .website(newSightDTO.getWebsite())
                 .time(newSightDTO.getTime())
