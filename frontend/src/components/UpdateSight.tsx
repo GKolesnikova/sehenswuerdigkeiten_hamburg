@@ -19,8 +19,6 @@ export default function UpdateSight (props: UpdateSightProps) {
 
     const findSight = props.sights.find((sight) => sight.id === id);
 
-    const [sight, setSight] = useState(findSight);
-
     const [updatedName, setUpdatedName] = useState( findSight  ?  findSight.name : "" );
     const [updatedImage1, setUpdatedImage1] = useState(findSight  ?  findSight.image1 : "" );
     const [updatedImage2, setUpdatedImage2] = useState(findSight  ?  findSight.image2 : "" );
@@ -65,11 +63,9 @@ export default function UpdateSight (props: UpdateSightProps) {
         }
 
 
-        setSight(updatedSight);
+
         props.updateSight(id, updatedSight);
         window.location.reload()
-
-
     }
 
 return (
