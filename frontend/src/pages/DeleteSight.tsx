@@ -1,5 +1,4 @@
 import {Sight} from "../model/Sight";
-import {useNavigate} from "react-router-dom";
 import React from "react";
 
 

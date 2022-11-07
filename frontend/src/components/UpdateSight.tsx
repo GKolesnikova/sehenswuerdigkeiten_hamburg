@@ -1,5 +1,5 @@
 import {Sight} from "../model/Sight";
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import React, {FormEvent, useState} from "react";
 
 
