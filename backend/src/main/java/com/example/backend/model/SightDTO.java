@@ -10,7 +10,9 @@ import lombok.NoArgsConstructor;
 public class SightDTO {
 
     private String name;
-    private String image;
+    private String image1;
+    private String image2;
+    private String image3;
     private String address;
     private String website;
     private String time;

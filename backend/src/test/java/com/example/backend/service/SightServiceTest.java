@@ -23,8 +23,8 @@ class SightServiceTest {
     void getAllSight() {
         // GIVEN
         when(sightRepo.findAll()).thenReturn(List.of(
-                new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT"),
-                new Sight("2","OOO", "KKK", "FFF", "VVV", "SSS", "ZZZ", "WWW"))
+                new Sight("1","AAA", "BBB1", "BBB2", "BBB3", "CCC", "DDD", "EEE", "HHH", "TTT"),
+                new Sight("2","OOO", "KKK1", "KKK2", "KKK3", "FFF", "VVV", "SSS", "ZZZ", "WWW"))
         );
 
         // WHEN
@@ -32,9 +32,9 @@ class SightServiceTest {
 
         // THEN
         List<Sight> expected = List.of(
-                new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT"),
-                new Sight("2","OOO", "KKK", "FFF", "VVV", "SSS", "ZZZ", "WWW")
-        );
+                new Sight("1","AAA", "BBB1", "BBB2", "BBB3", "CCC", "DDD", "EEE", "HHH", "TTT"),
+                new Sight("2","OOO", "KKK1", "KKK2", "KKK3", "FFF", "VVV", "SSS", "ZZZ", "WWW")
+      );
         verify(sightRepo).findAll();
         assertEquals(actual, expected);
     }
@@ -44,13 +44,13 @@ class SightServiceTest {
     @Test
     void getSightById_whenExists_ReturnSight() {
         // GIVEN
-        when(sightRepo.findById("1")).thenReturn(Optional.ofNullable(new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT")));
+        when(sightRepo.findById("1")).thenReturn(Optional.ofNullable(new Sight("1","AAA", "BBB1", "BBB2", "BBB3", "CCC", "DDD", "EEE", "HHH", "TTT")));
 
         // WHEN
         Sight actual = sightService.getSightById("1");
 
         // THEN
-        Sight expected = new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT");
+        Sight expected = new Sight("1","AAA", "BBB1", "BBB2", "BBB3", "CCC", "DDD", "EEE", "HHH", "TTT");
         verify(sightRepo).findById("1");
         assertEquals(actual, expected);
     }
@@ -71,12 +71,14 @@ class SightServiceTest {
     @Test
     void addNewSight_whenSightDTO () {
         // GIVEN
-        SightDTO sightDTO = new SightDTO("AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT");
+        SightDTO sightDTO = new SightDTO("AAA", "BBB1", "BBB2", "BBB3", "CCC", "DDD", "EEE", "HHH", "TTT");
         when(idService.generateID()).thenReturn("1");
         when(sightRepo.save(any())).thenReturn(Sight.builder()
                 .id("1")
                 .name(sightDTO.getName())
-                .image(sightDTO.getImage())
+                .image1(sightDTO.getImage1())
+                .image2(sightDTO.getImage2())
+                .image3(sightDTO.getImage3())
                 .address(sightDTO.getAddress())
                 .website(sightDTO.getWebsite())
                 .time(sightDTO.getTime())
@@ -88,7 +90,7 @@ class SightServiceTest {
         Sight actual = sightService.addNewSight(sightDTO);
 
         // THEN
-        Sight expected = new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT");
+        Sight expected = new Sight("1","AAA", "BBB1", "BBB2", "BBB3", "CCC", "DDD", "EEE", "HHH", "TTT");
         verify(sightRepo).save( any());
         assertEquals(actual, expected);
     }
@@ -96,9 +98,26 @@ class SightServiceTest {
 
 
     @Test
+    void updateSight_returnUpdatedSight () {
+        // GIVEN
+        Sight sight1 = new Sight("1","AAA", "BBB1", "BBB2", "BBB3", "CCC", "DDD", "EEE", "HHH", "TTT");
+        when(sightRepo.save(sight1)).thenReturn(sight1);
+        when(sightRepo.existsById("1")).thenReturn(true);
+
+        // WHEN
+        Sight actual = sightService.updateSight("1", sight1);
+
+        // THEN
+        verify(sightRepo).save(sight1);
+        assertEquals(sight1, actual);
+    }
+
+
+
+    @Test
     void deleteSight_whenSightExists () {
         // GIVEN
-        when(sightRepo.findById("1")).thenReturn(Optional.ofNullable(new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT")));
+        when(sightRepo.findById("1")).thenReturn(Optional.ofNullable(new Sight("1","AAA", "BBB1", "BBB2", "BBB3", "CCC", "DDD", "EEE", "HHH", "TTT")));
 
         // WHEN
         boolean actual = sightService.deleteSightById("1");

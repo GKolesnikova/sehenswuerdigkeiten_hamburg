@@ -1,8 +1,7 @@
 import {Sight} from "../model/Sight";
 import React, {ChangeEvent, FormEvent} from "react";
 import "./CreateSightPage.css";
-
-
+import {useNavigate} from "react-router-dom";
 
 
 
@@ -12,10 +11,14 @@ type CreateSightProps = {
 }
 
 export default function CreateSightPage (props: CreateSightProps) {
+    const navigate = useNavigate()
+
 
     const [newSight, setSight] = React.useState( {
         name: "",
-        image: "",
+        image1: "",
+        image2: "",
+        image3: "",
         address: "",
         website: "",
         time: "",
@@ -38,10 +41,11 @@ export default function CreateSightPage (props: CreateSightProps) {
         event.preventDefault()
 
         if ( !newSight ) {
-            alert ( `Please fill sight name, image, address, website, time, description and location `);
+            alert ( `Please fill sight name, image1, image2, image3, address, website, time, description and location `);
             return
         }
         props.addNewSight(newSight);
+        navigate ('/');
     }
 
 
@@ -63,13 +67,35 @@ export default function CreateSightPage (props: CreateSightProps) {
                 <div className="mb-3">
                      <input type="text"
                             className="form-control"
-                            name="image"
-                            value={newSight.image}
+                            name="image1"
+                            value={newSight.image1}
                             id="exampleFormControlInput1"
-                            placeholder="image"
+                            placeholder="image1"
                             required={true}
                             onChange={handleChange}
                      />
+                </div>
+                <div className="mb-3">
+                    <input type="text"
+                           className="form-control"
+                           name="image2"
+                           value={newSight.image2}
+                           id="exampleFormControlInput1"
+                           placeholder="image2"
+                           required={true}
+                           onChange={handleChange}
+                    />
+                </div>
+                <div className="mb-3">
+                    <input type="text"
+                           className="form-control"
+                           name="image3"
+                           value={newSight.image3}
+                           id="exampleFormControlInput1"
+                           placeholder="image3"
+                           required={true}
+                           onChange={handleChange}
+                    />
                 </div>
                 <div className="mb-3">
                      <input type="text"

@@ -4,7 +4,6 @@ import com.example.backend.model.SightDTO;
 import com.example.backend.service.SightService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
@@ -31,6 +30,11 @@ public class SightController {
     @PostMapping
     public Sight addNewSight (@RequestBody SightDTO newSightDTO) {
         return sightService.addNewSight(newSightDTO);
+    }
+
+    @PutMapping(path = "{id}")
+    public Sight updateSight (@PathVariable String id, @RequestBody Sight sight) {
+        return sightService.updateSight (id, sight);
     }
 
     @DeleteMapping("{id}")

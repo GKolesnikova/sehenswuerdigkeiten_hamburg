@@ -2,7 +2,6 @@ package com.example.backend.controller;
 import com.example.backend.model.Sight;
 import com.example.backend.repo.SightRepo;
 import com.example.backend.service.IdService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -12,6 +11,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
+import java.util.List;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -28,9 +30,6 @@ class SightControllerTest {
     MockMvc mockMvc;
 
     @Autowired
-    private ObjectMapper objectMapper;
-
-    @Autowired
     private SightRepo sightRepo;
 
     @MockBean
@@ -42,8 +41,8 @@ class SightControllerTest {
     @Test
     void getAllSight() throws Exception {
         // GIVEN
-        sightRepo.save( new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT"));
-        sightRepo.save( new Sight("2","OOO", "KKK", "FFF", "VVV", "SSS", "ZZZ", "WWW"));
+        sightRepo.save( new Sight("1","AAA", "BBB1", "BBB2", "BBB3", "CCC", "DDD", "EEE", "HHH", "TTT"));
+        sightRepo.save( new Sight("2","OOO", "KKK1", "KKK2", "KKK3", "FFF", "VVV", "SSS", "ZZZ", "WWW"));
 
 
         // WHEN & THEN
@@ -52,7 +51,9 @@ class SightControllerTest {
                     {
                         "id": "1",                               
                         "name": "AAA",
-                        "image": "BBB",
+                        "image1": "BBB1",
+                        "image2": "BBB2",
+                        "image3": "BBB3",
                         "address": "CCC",
                         "website": "DDD",
                         "time": "EEE",
@@ -62,7 +63,9 @@ class SightControllerTest {
                      {
                         "id": "2",                               
                         "name": "OOO",
-                        "image": "KKK",
+                        "image1": "KKK1",
+                        "image2": "KKK2",
+                        "image3": "KKK3",
                         "address": "FFF",
                         "website": "VVV",
                         "time": "SSS",
@@ -77,6 +80,12 @@ class SightControllerTest {
                         get("/api/sights"))
                 .andExpect(status().is(200))
                 .andExpect(content().json(expectedJSON));
+
+        List <Sight> sightsList = sightRepo.findAll();
+        assertThat(sightsList, containsInAnyOrder(
+                new Sight("1","AAA", "BBB1", "BBB2", "BBB3", "CCC", "DDD", "EEE", "HHH", "TTT"),
+                new Sight("2","OOO", "KKK1", "KKK2", "KKK3", "FFF", "VVV", "SSS", "ZZZ", "WWW")
+        ));
     }
 
 
@@ -97,15 +106,17 @@ class SightControllerTest {
     @Test
     void getSightById_whenExists_ReturnSight () throws Exception {
         // GIVEN
-        sightRepo.save( new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT"));
-        sightRepo.save( new Sight("2","OOO", "KKK", "FFF", "VVV", "SSS", "ZZZ", "WWW"));
+        sightRepo.save( new Sight("1","AAA", "BBB1", "BBB2", "BBB3", "CCC", "DDD", "EEE", "HHH", "TTT"));
+        sightRepo.save( new Sight("2","OOO", "KKK1", "KKK2", "KKK3", "FFF", "VVV", "SSS", "ZZZ", "WWW"));
 
         // WHEN & THEN
         String expectedJSON = """
                     {
                         "id": "1",                               
                         "name": "AAA",
-                        "image": "BBB",
+                        "image1": "BBB1",
+                        "image2": "BBB2",
+                        "image3": "BBB3",
                         "address": "CCC",
                         "website": "DDD",
                         "time": "EEE",
@@ -147,7 +158,9 @@ class SightControllerTest {
                 .content("""
                     {                                                   
                         "name": "AAA",
-                        "image": "BBB",
+                        "image1": "BBB1",
+                        "image2": "BBB2",
+                        "image3": "BBB3",
                         "address": "CCC",
                         "website": "DDD",
                         "time": "EEE",
@@ -160,7 +173,9 @@ class SightControllerTest {
                     {
                         "id": "1",                               
                         "name": "AAA",
-                        "image": "BBB",
+                        "image1": "BBB1",
+                        "image2": "BBB2",
+                        "image3": "BBB3",
                         "address": "CCC",
                         "website": "DDD",
                         "time": "EEE",
@@ -168,7 +183,13 @@ class SightControllerTest {
                         "location": "TTT"                                         
                      }               
                 """));
+
+        List <Sight> sightsList = sightRepo.findAll();
+        assertThat(sightsList, containsInAnyOrder(
+                new Sight("1","AAA", "BBB1", "BBB2", "BBB3", "CCC", "DDD", "EEE", "HHH", "TTT")
+         ));
     }
+
 
 
     @Test
@@ -183,7 +204,9 @@ class SightControllerTest {
                 .content("""
                     {                                                   
                         "name": "AAA",
-                        "image": "BBB",
+                        "image1": "BBB1",
+                        "image2": "BBB2",
+                        "image3": "BBB3",
                         "address": "CCC",
                         "website": "DDD",
                         "time": "EEE",
@@ -193,6 +216,7 @@ class SightControllerTest {
                 """))
                 .andExpect(status().is(200)).andReturn();
     }
+
 
 
    @Test
@@ -206,7 +230,9 @@ class SightControllerTest {
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .content("""
                     {       
-                        "image": "BBB",
+                        "image1": "BBB1",
+                        "image2": "BBB2",
+                        "image3": "BBB3",
                         "address": "CCC",
                         "website": "DDD",
                         "time": "EEE",
@@ -219,16 +245,89 @@ class SightControllerTest {
 
 
 
+    @Test
+    void updateSight_returnUpdatedSight () throws Exception {
+        // GIVEN
+        sightRepo.save( new Sight("1","AAA", "BBB1", "BBB2", "BBB3", "CCC", "DDD", "EEE", "HHH", "TTT"));
+        sightRepo.save( new Sight("2","OOO", "KKK1", "KKK2", "KKK3", "FFF", "VVV", "SSS", "ZZZ", "WWW"));
+
+        // WHEN & THEN
+        mockMvc.perform(
+                        put("/api/sights/1")
+                                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                                .content("""
+                    {     
+                        "id": "1",                                               
+                        "name": "222",
+                        "image1": "333",
+                        "image2": "333",
+                        "image3": "333",
+                        "address": "444",
+                        "website": "555",
+                        "time": "666",
+                        "description": "777",
+                        "location": "888"                                         
+                     }               
+                """))
+                .andExpect(status().is(200))
+                .andExpect(content().json("""
+                    {
+                        "id": "1",                               
+                        "name": "222",
+                        "image1": "333",
+                        "image2": "333",
+                        "image3": "333",
+                        "address": "444",
+                        "website": "555",
+                        "time": "666",
+                        "description": "777",
+                        "location": "888"                                         
+                     }               
+                """));
+
+
+        List <Sight> sightsList = sightRepo.findAll();
+        assertThat(sightsList, containsInAnyOrder(
+                new Sight("1","222", "333", "333", "333", "444", "555", "666", "777", "888"),
+                new Sight("2","OOO", "KKK1", "KKK2", "KKK3", "FFF", "VVV", "SSS", "ZZZ", "WWW")
+        ));
+    }
+
+
+
+    @Test
+    void updateSight_whenIdNotExists_Return404 () throws Exception {
+        // GIVEN
+
+        // WHEN & THEN
+        mockMvc.perform(
+                        put("/api/sights/17690")
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .content("""
+                   {     
+                                                               
+                     }                                   
+                """))
+                .andExpect(status().is(404));
+    }
+
 
     @Test
     void deleteSightById () throws Exception {
         // GIVEN
-        sightRepo.save( new Sight("1","AAA", "BBB", "CCC", "DDD", "EEE", "HHH", "TTT"));
+        sightRepo.save( new Sight("1","AAA", "BBB1", "BBB2", "BBB3", "CCC", "DDD", "EEE", "HHH", "TTT"));
+        sightRepo.save( new Sight("2","OOO", "KKK1", "KKK2", "KKK3", "FFF", "VVV", "SSS", "ZZZ", "WWW"));
+
 
         // WHEN & THEN
         mockMvc.perform(
                         delete("/api/sights/1"))
                 .andExpect(status().is(200));
+
+        List <Sight> sightsList = sightRepo.findAll();
+        assertThat(sightsList, containsInAnyOrder(
+                new Sight("2","OOO", "KKK1", "KKK2","KKK3", "FFF", "VVV", "SSS", "ZZZ", "WWW")
+        ));
     }
 }
 
