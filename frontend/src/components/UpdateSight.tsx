@@ -11,7 +11,7 @@ type UpdateSightProps = {
 
 export default function UpdateSight (props: UpdateSightProps) {
 
-    const navigate = useNavigate()
+    //const navigate = useNavigate()
 
     const params = useParams();
     const id = params.id;

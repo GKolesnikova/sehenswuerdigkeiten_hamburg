@@ -12,7 +12,7 @@ import {ToastContainer} from "react-toastify";
 
 function App() {
 
-  const {sight, sights, getAllSights, addNewSight, updateSight, deleteSightById} = useSights();
+  const {sights, getAllSights, addNewSight, updateSight, deleteSightById} = useSights();
 
 
   return (

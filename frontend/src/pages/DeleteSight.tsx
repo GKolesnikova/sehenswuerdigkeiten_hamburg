@@ -11,7 +11,7 @@ type DeleteSightProps = {
 
 export default function DeleteSight (props: DeleteSightProps) {
 
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     const onDelete = () => {
         props.deleteSightById(props.sight.id);
@@ -19,8 +19,6 @@ export default function DeleteSight (props: DeleteSightProps) {
         window.location.reload()
 
     }
-
-
 
 return (
     <div>
