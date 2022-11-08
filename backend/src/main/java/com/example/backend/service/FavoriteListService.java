@@ -34,7 +34,6 @@ public class FavoriteListService {
 
         Optional <FavoriteList> optionalFavoriteList  = favoriteListRepo.findById (favoriteListId);
         FavoriteList favoriteList;
-
         if ( optionalFavoriteList.isEmpty() ) {
             favoriteList = new FavoriteList();
         } else {

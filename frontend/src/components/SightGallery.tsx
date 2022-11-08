@@ -1,12 +1,16 @@
 import {Sight} from "../model/Sight";
 import SightCard from "./SightCard";
 import {useState} from "react";
+import {FavoriteList} from "../model/FavoriteList";
 
 
 
 type SightGalleryProps = {
      sights : Sight[] ;
-     getAllSights: () => void;
+    favoriteList: FavoriteList;
+    getAllSights: () => void;
+    addNewSightInFavoriteListe : (favoriteListId: string | undefined, sightId: string | undefined) => void;
+    deleteSightFromFavoriteListe : (favoriteListId: string | undefined, sightId: string | undefined) => void;
 }
 
 export default function SightGallery (props: SightGalleryProps) {
@@ -28,7 +32,7 @@ export default function SightGallery (props: SightGalleryProps) {
              <h1>Keine Sehenswürdigkeiten vorhanden</h1>
              :
                  filteredSights.map((sight) =>
-                 <SightCard key={sight.id} sight={sight} sights={props.sights}   />)
+                 <SightCard key={sight.id} sight={sight} addNewSightInFavoriteListe={props.addNewSightInFavoriteListe} deleteSightFromFavoriteListe={props.deleteSightFromFavoriteListe} favoriteList={props.favoriteList}/>)
              }
          </div>
      )

@@ -57,5 +57,5 @@ export default function useSights () {
     }
 
 
-    return {sight, sights, getAllSights, getSightById, addNewSight, updateSight, deleteSightById}
+    return { sight, sights, getAllSights, getSightById, addNewSight, updateSight, deleteSightById }
 }
