@@ -13,8 +13,10 @@ import useFavoriteList from "./hooks/useFavoriteList";
 
 function App() {
 
+ 
   const {sight, sights, getAllSights, addNewSight, updateSight, deleteSightById} = useSights();
   const {favoriteList, favoriteLists, getAllFavoriteListe, getFavoriteList, addNewSightInFavoriteListe, deleteFavoriteList, deleteSightFromFavoriteListe} = useFavoriteList();
+ 
 
 
   return (

@@ -140,7 +140,7 @@ export default function SightDetailPage (props: SightDetailPageProps) {
                         <div className={"col-11"}>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2369.861405521715!2d9.982204300000001!3d53.560241500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b18f3decfe099d%3A0x4342a16041772e5c!2z0JPQsNC80LHRg9GA0LPRgdC60LjQuSDQsdC-0YLQsNC90LjRh9C10YHQutC40Lkg0YHQsNC0ICjQn9C70LDQvdGC0LXQvS3Rg9C9LdCR0LvQvtC80LXQvSk!5e0!3m2!1sru!2sde!4v1667595420384!5m2!1sru!2sde"
-                            height="600" style={{border: "0", width: "inherit"}}   loading="lazy"
+                            height="600" style={{border: "0", width: "inherit"}} title={"Location from this sight"}  loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>

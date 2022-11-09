@@ -1,5 +1,4 @@
 import {Sight} from "../model/Sight";
-import {useNavigate} from "react-router-dom";
 import React from "react";
 
 
@@ -11,7 +10,7 @@ type DeleteSightProps = {
 
 export default function DeleteSight (props: DeleteSightProps) {
 
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     const onDelete = () => {
         props.deleteSightById(props.sight.id);
@@ -19,8 +18,6 @@ export default function DeleteSight (props: DeleteSightProps) {
         window.location.reload()
 
     }
-
-
 
 return (
     <div>

@@ -1,5 +1,5 @@
 import {Sight} from "../model/Sight";
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import React, {FormEvent, useState} from "react";
 
 
@@ -11,7 +11,7 @@ type UpdateSightProps = {
 
 export default function UpdateSight (props: UpdateSightProps) {
 
-    const navigate = useNavigate()
+    //const navigate = useNavigate()
 
     const params = useParams();
     const id = params.id;
@@ -62,10 +62,12 @@ export default function UpdateSight (props: UpdateSightProps) {
             location: updatedLocation
         }
 
-        props.updateSight(id, updatedSight);
-        //window.location.reload()
-        navigate(`/sights/` +id);
+ 
 
+
+        props.updateSight(id, updatedSight);
+        window.location.reload()
+ 
     }
 
 return (
