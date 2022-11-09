@@ -9,10 +9,13 @@ import java.util.*;
 public class FavoriteListService {
 
     private final FavoriteListRepo favoriteListRepo;
+    private final IdService idService;
 
-    public FavoriteListService(FavoriteListRepo favoriteListRepo) {
+
+    public FavoriteListService(FavoriteListRepo favoriteListRepo, IdService idService) {
         this.favoriteListRepo = favoriteListRepo;
-     }
+        this.idService = idService;
+    }
 
     public List <FavoriteList> getAllFavoriteListe() {
         return favoriteListRepo.findAll();
@@ -27,16 +30,17 @@ public class FavoriteListService {
 
     public FavoriteList addNewSightInFavoriteListe (String favoriteListId, String sightId) {
 
-        if ( sightId  == null || sightId.isEmpty() )
+        if ( favoriteListId  == null || favoriteListId.isEmpty() || sightId  == null || sightId.isEmpty())
         {
-            throw new IllegalArgumentException ("Sight id is empty and require to fill");
+            throw new IllegalArgumentException ("Sight id from favorite liste oder sight is empty and require to fill");
         }
 
         Optional <FavoriteList> optionalFavoriteList  = favoriteListRepo.findById (favoriteListId);
         FavoriteList favoriteList;
-
-        if ( optionalFavoriteList.isEmpty() ) {
+        if ( optionalFavoriteList.isEmpty() || optionalFavoriteList  == null ) {
             favoriteList = new FavoriteList();
+            favoriteList.setId(idService.generateID());
+
         } else {
               favoriteList = optionalFavoriteList.get();
         }

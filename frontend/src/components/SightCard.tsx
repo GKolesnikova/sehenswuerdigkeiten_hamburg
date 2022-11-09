@@ -1,15 +1,42 @@
 import {Sight} from "../model/Sight";
 import "./SightCard.css";
 import {Link} from "react-router-dom";
+import { FormEvent, useState} from "react";
+import {FavoriteList} from "../model/FavoriteList";
 
 
 
 type SightCardProps = {
     sight: Sight;
-    sights: Sight[];
- }
+    favoriteList: FavoriteList;
+    addNewSightInFavoriteListe : (favoriteListId: string | undefined, sightId: string | undefined) => void;
+    deleteSightFromFavoriteListe : (favoriteListId: string | undefined, sightId: string | undefined) => void;
+}
 
 export default function SightCard (props: SightCardProps) {
+
+    const [inFavoriteList, setInFavoriteList] = useState(false);
+
+
+    const handleFavoriteList = (event: FormEvent, sightId: string | undefined) => {
+        setInFavoriteList(!inFavoriteList);
+        console.log(inFavoriteList);
+
+        let iconElement = document.getElementById("favorite-icon_" + sightId );
+        let favoriteListId = props.favoriteList === undefined ? " " : props.favoriteList.id;
+
+        if (inFavoriteList) {
+             if ( iconElement != null  ) {
+                 iconElement.classList.add("active");
+                 props.addNewSightInFavoriteListe(favoriteListId, props.sight.id);
+             }
+        } else   {
+            if ( iconElement != null ) {
+                iconElement.classList.remove("active");
+                props.deleteSightFromFavoriteListe(favoriteListId, props.sight.id);
+            }
+        }
+    }
 
 
 
@@ -26,7 +53,7 @@ export default function SightCard (props: SightCardProps) {
                              </Link>
                          </div>
                          <div className= "col-4" style={{textAlign: "right", cursor: "pointer" }}>
-                           <i className="bi bi-star-fill favorite active " ></i>
+                             <i id={"favorite-icon_" + props.sight.id} className="bi bi-star-fill favorite active "  onClick={(event) => handleFavoriteList(event, props.sight.id)} ></i>
                          </div>
                     </div>
 

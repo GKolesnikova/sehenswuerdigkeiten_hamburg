@@ -62,10 +62,12 @@ export default function UpdateSight (props: UpdateSightProps) {
             location: updatedLocation
         }
 
+ 
 
 
         props.updateSight(id, updatedSight);
         window.location.reload()
+ 
     }
 
 return (
@@ -182,7 +184,7 @@ return (
                         </form>
                     </div>
                     <div className="modal-footer">
-                        <button type="submit" className="btn btn-primary" onClick={handleSubmit} style={{backgroundColor: "#12e2e7"}}>Update</button>
+                        <button type="submit" className="btn btn-primary" data-bs-dismiss="modal" onClick={handleSubmit} style={{backgroundColor: "#12e2e7"}}>Update</button>
                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" style={{backgroundColor: "orange"}}>Close</button>
                     </div>
                 </div>

@@ -87,13 +87,13 @@ export default function SightDetailPage (props: SightDetailPageProps) {
                     </div>
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <img src="https://na-dache.pro/uploads/posts/2021-05/1620905748_10-p-polevie-tsveti-foto-11.jpg" className="d-block w-100" alt="Foto 1"/>
+                            <img src={findSight.image1} className="d-block w-100" alt={findSight.name}/>
                         </div>
                         <div className="carousel-item">
-                            <img src="https://na-dache.pro/uploads/posts/2021-05/1620905802_57-p-polevie-tsveti-foto-65.jpg" className="d-block w-100" alt="Foto 2"/>
+                            <img src={findSight.image2} className="d-block w-100" alt={findSight.name}/>
                         </div>
                         <div className="carousel-item">
-                            <img src="https://na-dache.pro/uploads/posts/2021-05/1620905805_71-p-polevie-tsveti-foto-79.jpg" className="d-block w-100" alt="Foto 3"/>
+                            <img src={findSight.image3} className="d-block w-100" alt={findSight.name}/>
                         </div>
                     </div>
                     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
