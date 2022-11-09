@@ -2,7 +2,6 @@ import {useEffect, useState} from "react";
 import {FavoriteList} from "../model/FavoriteList";
 import axios from "axios";
 import {toast} from "react-toastify";
-import {Sight} from "../model/Sight";
 
 
 

@@ -23,17 +23,17 @@ export default function SightCard (props: SightCardProps) {
         console.log(inFavoriteList);
 
         let iconElement = document.getElementById("favorite-icon_" + sightId );
+        let favoriteListId = props.favoriteList === undefined ? " " : props.favoriteList.id;
 
         if (inFavoriteList) {
              if ( iconElement != null  ) {
                  iconElement.classList.add("active");
-                 props.addNewSightInFavoriteListe(props.favoriteList.id, props.sight.id);
+                 props.addNewSightInFavoriteListe(favoriteListId, props.sight.id);
              }
         } else   {
             if ( iconElement != null ) {
                 iconElement.classList.remove("active");
-                props.deleteSightFromFavoriteListe(props.favoriteList.id, props.sight.id);
-
+                props.deleteSightFromFavoriteListe(favoriteListId, props.sight.id);
             }
         }
     }
@@ -53,7 +53,7 @@ export default function SightCard (props: SightCardProps) {
                              </Link>
                          </div>
                          <div className= "col-4" style={{textAlign: "right", cursor: "pointer" }}>
-                           <i id={"favorite-icon_" + props.sight.id} className="bi bi-star-fill favorite active "  onClick={(event) => handleFavoriteList(event, props.sight.id)} ></i>
+                             <i id={"favorite-icon_" + props.sight.id} className="bi bi-star-fill favorite active "  onClick={(event) => handleFavoriteList(event, props.sight.id)} ></i>
                          </div>
                     </div>
 
