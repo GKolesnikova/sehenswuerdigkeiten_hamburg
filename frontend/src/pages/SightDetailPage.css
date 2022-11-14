@@ -1,5 +1,93 @@
 .justify-content-around {
-
     padding-bottom: 5%;
+}
 
+
+a.zuruck >h1:hover  {
+    font-size: 220%;
+    color: #7cf68c;
+   text-shadow: 2px 2px #0d6efd;
+}
+
+
+.back {
+    color : #3fd020;
+    --bs-btn-border-color:#3fd020;
+
+    --bs-btn-hover-color: #309b19;
+    --bs-btn-hover-bg: #d8ff63;
+    --bs-btn-hover-border-color: #3fd020;
+
+    --bs-btn-active-color: #0d6efd;
+    --bs-btn-active-bg: #a4fa87;
+    --bs-btn-active-border-color: #0d6efd;
+}
+
+
+
+.update {
+    --bs-btn-hover-color:#0d6efd;
+    --bs-btn-hover-bg: #9df5db;
+    --bs-btn-hover-border-color: #0d6efd;
+
+    --bs-btn-active-color: #0d6efd;
+    --bs-btn-active-bg: #56fced;
+    --bs-btn-active-border-color: #0d6efd;
+}
+
+.delete {
+
+    color : orange;
+    --bs-btn-border-color:orange;
+
+    --bs-btn-hover-color: orange;
+    --bs-btn-hover-bg: #fdfbad;
+    --bs-btn-hover-border-color: orange;
+
+    --bs-btn-active-color: #05ea08;
+    --bs-btn-active-bg: #fffb50;
+    --bs-btn-active-border-color: #f5ef7d;
+}
+
+
+.name {
+    margin: 1%;
+    color: rgb(255 163 1);
+}
+
+
+.titels {
+    color: #40b6af;
+}
+
+
+.details {
+    color: rgb(137 93 17);
+}
+
+
+.fotos-blok{
+    margin: 2% 7% 1% 7%;
+}
+
+
+.fotos {
+    border-radius: 50px;
+    border: 6px solid #fffb4f;
+}
+
+
+.name {
+    color: rgb(255 163 1);
+}
+
+
+.karte {
+    margin: 1% 0;
+
+}
+
+
+iframe {
+    border-radius: 50px;
 }

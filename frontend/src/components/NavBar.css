@@ -1,5 +1,19 @@
 .willkommen {
-color: #05bbde;
- margin: 1.5% 0;
- font-size: 20%;
+   color: #05bbde;
+   margin: 1.5% 0;
+   font-size: 20%;
  }
+
+
+.login {
+
+  color : #0d6efd;
+   --bs-btn-border-color:#0d6efd;
+   --bs-btn-hover-color:#0d6efd;
+   --bs-btn-hover-bg: #fffb50 ;
+   --bs-btn-hover-border-color: #f6d42d;
+   --bs-btn-active-color: #0d6efd;
+   --bs-btn-active-bg: #9df5db;
+   --bs-btn-active-border-color: #0d6efd;
+
+}

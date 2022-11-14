@@ -1,0 +1,24 @@
+.update {
+    --bs-btn-hover-color:#0d6efd;
+    --bs-btn-hover-bg: #9df5db;
+    --bs-btn-hover-border-color: #0d6efd;
+
+    --bs-btn-active-color: #0d6efd;
+    --bs-btn-active-bg: #56fced;
+    --bs-btn-active-border-color: #0d6efd;
+
+
+}
+
+.delete {
+    color : orange;
+    --bs-btn-border-color:orange;
+
+    --bs-btn-hover-color: orange;
+    --bs-btn-hover-bg: #fdfbad;
+    --bs-btn-hover-border-color: orange;
+
+    --bs-btn-active-color: #05ea08;
+    --bs-btn-active-bg: #fffb50;
+    --bs-btn-active-border-color: #f5ef7d;
+}

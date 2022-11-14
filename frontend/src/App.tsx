@@ -7,17 +7,14 @@ import Homepage from "./pages/Homepage";
 import CreateSightPage from "./pages/CreateSightPage";
 import SightDetailPage from "./pages/SightDetailPage";
 import {ToastContainer} from "react-toastify";
-import useFavoriteList from "./hooks/useFavoriteList";
+import useAppUsers from "./hooks/useAppUsers";
 
 
 
 function App() {
 
- 
-  const {sight, sights, getAllSights, addNewSight, updateSight, deleteSightById} = useSights();
-  const {favoriteList, favoriteLists, getAllFavoriteListe, getFavoriteList, addNewSightInFavoriteListe, deleteFavoriteList, deleteSightFromFavoriteListe} = useFavoriteList();
- 
-
+  const {sights, getAllSights, addNewSight, updateSight, deleteSightById} = useSights();
+  const {me, login, logout, register, addNewSightToFavoriteListUser, deleteSightFromFavoriteListeUser } = useAppUsers();
 
   return (
       <div className="App">
@@ -33,12 +30,11 @@ function App() {
                           theme="light"/>
           <header>
               <HashRouter>
-                  <NavBar/>
+                  <NavBar  me={me} login={login} logout={logout} register={register}/>
                   <Routes>
                       < Route path={"/homepage"} element={<Homepage/>}  />
-                      < Route path={"/"} element={<SightGallery  sights={sights}  getAllSights={getAllSights}  addNewSightInFavoriteListe={addNewSightInFavoriteListe} deleteSightFromFavoriteListe={deleteSightFromFavoriteListe}  favoriteList={favoriteList}/>}  />
+                      < Route path={"/"} element={<SightGallery  sights={sights}  getAllSights={getAllSights} me={me} addNewSightToFavoriteListUser={addNewSightToFavoriteListUser} deleteSightFromFavoriteListeUser={deleteSightFromFavoriteListeUser}  />}  />
                       < Route path={"/sights/:id"} element={<SightDetailPage  sights={sights}  updateSight={updateSight}  deleteSightById={deleteSightById}/>}  />
-
                       < Route path={"/form"} element={<CreateSightPage addNewSight={addNewSight}/>}  />
                   </Routes>
               </HashRouter>
