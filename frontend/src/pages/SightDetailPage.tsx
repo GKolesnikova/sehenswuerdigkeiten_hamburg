@@ -131,7 +131,7 @@ export default function SightDetailPage (props: SightDetailPageProps) {
                                     <div className={"col-11 karte"}>
                                         <iframe
                                             src={findSight.location}
-                                            height="600" style={{border: "0", width: "inherit"}}   loading="lazy"
+                                            height="600" style={{border: "0", width: "inherit"}}  title={"Location"} loading="lazy"
                                             referrerPolicy="no-referrer-when-downgrade">
                                         </iframe>
                                     </div>

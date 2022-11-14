@@ -1,7 +1,6 @@
 import {Sight} from "../model/Sight";
 import React from "react";
 import "./DeleteSight.css";
-import {ReplyIcon} from "@primer/octicons-react";
 
 
 
