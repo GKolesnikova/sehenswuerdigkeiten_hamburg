@@ -27,7 +27,6 @@ export default function CreateSightPage (props: CreateSightProps) {
     })
 
     function handleChange (changeEvent: ChangeEvent<HTMLInputElement>) {
-        console.log(changeEvent);
         setSight ( prevSight => ({
             ...prevSight,
             [changeEvent.target.name]:
@@ -51,7 +50,7 @@ export default function CreateSightPage (props: CreateSightProps) {
 
     return (
         <div className="main-form"  >
-            <h2>Create a new sight</h2>
+            <h2 style={{color: "rgb(137 93 17)"}}>Create a new sight</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <input type="text"
@@ -69,7 +68,7 @@ export default function CreateSightPage (props: CreateSightProps) {
                             className="form-control"
                             name="image1"
                             value={newSight.image1}
-                            id="exampleFormControlInput1"
+                            id="exampleFormControlInput2"
                             placeholder="image1"
                             required={true}
                             onChange={handleChange}
@@ -80,7 +79,7 @@ export default function CreateSightPage (props: CreateSightProps) {
                            className="form-control"
                            name="image2"
                            value={newSight.image2}
-                           id="exampleFormControlInput1"
+                           id="exampleFormControlInput3"
                            placeholder="image2"
                            required={true}
                            onChange={handleChange}
@@ -91,7 +90,7 @@ export default function CreateSightPage (props: CreateSightProps) {
                            className="form-control"
                            name="image3"
                            value={newSight.image3}
-                           id="exampleFormControlInput1"
+                           id="exampleFormControlInput4"
                            placeholder="image3"
                            required={true}
                            onChange={handleChange}
@@ -102,7 +101,7 @@ export default function CreateSightPage (props: CreateSightProps) {
                             className="form-control"
                             name="address"
                             value={newSight.address}
-                            id="exampleFormControlInput1"
+                            id="exampleFormControlInput5"
                             placeholder="address"
                             required={true}
                             onChange={handleChange}
@@ -113,7 +112,7 @@ export default function CreateSightPage (props: CreateSightProps) {
                             className="form-control"
                             name="website"
                             value={newSight.website}
-                            id="exampleFormControlInput1"
+                            id="exampleFormControlInput6"
                             placeholder="website"
                             required={true}
                             onChange={handleChange}
@@ -124,7 +123,7 @@ export default function CreateSightPage (props: CreateSightProps) {
                             className="form-control"
                             name="time"
                             value={newSight.time}
-                            id="exampleFormControlInput1"
+                            id="exampleFormControlInput7"
                             placeholder="time"
                             required={true}
                             onChange={handleChange}
@@ -136,7 +135,7 @@ export default function CreateSightPage (props: CreateSightProps) {
                            className="form-control"
                            name="description"
                            value={newSight.description}
-                           id="exampleFormControlInput1"
+                           id="exampleFormControlInput8"
                            placeholder="sight description"
                            required={true}
                            onChange={handleChange}
@@ -147,14 +146,14 @@ export default function CreateSightPage (props: CreateSightProps) {
                            className="form-control"
                            name="location"
                            value={newSight.location}
-                           id="exampleFormControlInput1"
+                           id="exampleFormControlInput9"
                            placeholder="location"
                            required={true}
                            onChange={handleChange}
                     />
                 </div>
                 <div className="form-check form-switch check-again">
-                    <input style={{width: "7em", height: "1.7em", backgroundColor: "rgb(253 255 0)"}}
+                    <input style={{width: "7em", height: "1.7em", backgroundColor: "#fffb50" }}
                            className="form-check-input"
                            name="check"
                            type="checkbox"
@@ -162,11 +161,11 @@ export default function CreateSightPage (props: CreateSightProps) {
                            id="flexSwitchCheckDefault"
                            required={true}
                     />
-                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault"><h4>Check all data again</h4></label>
+                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault"><h4 style={{color: "rgb(137 93 17)"}}>Check all data again</h4></label>
                 </div>
 
                 <div className="d-grid gap-2">
-                     <button className="btn btn-primary" type="submit" style={{backgroundColor: "#12e2e7"}}>Add</button>
+                     <button className="btn btn-outline-info add" type="submit"  >Add new sight</button>
                 </div>
             </form>
         </div>
