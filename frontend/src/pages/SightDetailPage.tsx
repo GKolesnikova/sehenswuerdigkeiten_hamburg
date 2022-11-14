@@ -54,7 +54,7 @@ export default function SightDetailPage (props: SightDetailPageProps) {
                             </div>
 
                             <div className= "col-4">
-                                <button type="button" className="btn btn-outline-info update" data-bs-toggle="modal"   data-bs-target="#exampleModal"   style={{width: "13em", height: "2.5em"}} >
+                                <button type="button" className="btn btn-outline-info update" data-bs-toggle="modal"   data-bs-target="#exampleModal1"   style={{width: "13em", height: "2.5em"}} >
                                     <i className="bi bi-pencil-square" style={{ marginRight: "10px"}}></i>Update
                                 </button>
                                 <UpdateSight  sights={props.sights} updateSight={props.updateSight}/>

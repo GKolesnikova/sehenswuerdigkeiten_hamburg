@@ -117,7 +117,7 @@ export default function LoginModul (props: LoginPageProps) {
                             <div>
                                 <form>
                                     <div className="greetings">
-                                        <div>Herzlich willkommen zurück
+                                        <div style={{ color: "rgb(137 93 17)"}}>Herzlich willkommen zurück
                                             <h3 style={{color: "#16dbd6" }}>
                                                 <i className="bi bi-emoji-sunglasses" style={{ marginRight: "10px" }}></i>
                                                 {props.me.userName}!
