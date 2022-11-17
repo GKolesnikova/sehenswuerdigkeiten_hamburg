@@ -36,7 +36,7 @@ export default function WeatherObjectCard (props: WeatherObjectCardProps) {
                         <div className="col-6">
                             <div>{props.weatherObject.weather.map((element) =>
                                 <div key={Math.random()*16}>
-                                    <img src={"http://openweathermap.org/img/wn/" + element.icon + "@2x.png"} />
+                                    <img src={"http://openweathermap.org/img/wn/" + element.icon + "@2x.png"}  alt={"icon"}/>
                                     <p>{element.description}</p>
                                 </div>
                             )}
