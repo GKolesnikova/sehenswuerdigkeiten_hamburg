@@ -40,7 +40,6 @@ public class UserController {
 
     @PostMapping("/register")
     public UserInfoDto register (@RequestBody CreateUserDto createUserDto) {
-
         String username = userService.register(createUserDto);
         return userService.getUserInfoDtoByUsername(username);
     }

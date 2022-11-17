@@ -2,6 +2,8 @@ package com.example.backend.security.validation;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class PasswordValidation {
     public static List<String> errorsPasswordValidation;
     public static String[] forbiddenList = { "123456", "Password123", "password123", "MeinPassword", "Password1",
@@ -9,15 +11,7 @@ public class PasswordValidation {
 
 
     public static boolean isPasswordValidated ( String password ) {
-        errorsPasswordValidation = new ArrayList<>();
-
-        /*return !isForbidden (password)
-                & isLongerThan7 ( password )
-                & isContainsDigit ( password )
-                & isContainsUppercase ( password )
-                & isContainsLowercase ( password );*/
-
-        System.out.println("MMMMMMMMM");
+        errorsPasswordValidation = new ArrayList <String> ();
 
         return !isForbidden(password)
                 & isLongerThan7 ( password )
@@ -46,6 +40,7 @@ public class PasswordValidation {
         errorsPasswordValidation.add ( "Password must have at least 8 characters " );
         return false;
     }
+
 
     public static boolean isContainsDigit ( String password ) {
         char[] chars = password.toCharArray();

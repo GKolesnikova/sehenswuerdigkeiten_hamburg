@@ -1,4 +1,5 @@
 package com.example.backend.security.service;
+import com.example.backend.exception.PasswordValidationException;
 import com.example.backend.security.model.AppUser;
 import com.example.backend.security.model.CreateUserDto;
 import com.example.backend.security.model.UserInfoDto;
@@ -45,7 +46,7 @@ public class UserService {
 
     public String register (CreateUserDto createUserDto) {
         if ( !PasswordValidation.isPasswordValidated (createUserDto.getPassword()) ) {
-            throw new SecurityException ( PasswordValidation.errorsPasswordValidation.toString() );
+            throw new PasswordValidationException ( PasswordValidation.errorsPasswordValidation.toString() );
         }
 
         String hashedPassword = passwordEncoder.encode(createUserDto.getPassword());

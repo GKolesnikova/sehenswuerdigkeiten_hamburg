@@ -54,7 +54,7 @@ export default function SightCard (props: SightCardProps) {
                          <div  className="row d-flex justify-content-around " style={{paddingBottom: "3%"}}>
                              <div className= "col-4"></div>
                              <div className= "col-4">
-                                 <Link to={"/sights/" + props.sight.id} >
+                                 <Link to={"/sights/" + props.sight.id}  >
                                         <button type="button" className="btn btn-outline-info detal" data-bs-toggle="modal"   data-bs-target="#update-sight-form" style={{  height: "2.5em"}} >Details</button>
                                  </Link>
                              </div>

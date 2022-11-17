@@ -1,0 +1,18 @@
+package com.example.backend.api.model;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Sys {
+
+    private int sunrise;
+    private int sunset;
+
+}

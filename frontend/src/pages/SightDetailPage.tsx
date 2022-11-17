@@ -1,6 +1,6 @@
 import {Sight} from "../model/Sight";
 import {Link, useParams} from "react-router-dom";
-import React from "react";
+import React, {useEffect} from "react";
 import UpdateSight from "../components/UpdateSight";
 import DeleteSight from "../components/DeleteSight";
 import {ReplyIcon} from "@primer/octicons-react";
@@ -18,7 +18,8 @@ type SightDetailPageProps = {
 
 export default function SightDetailPage (props: SightDetailPageProps) {
 
-    //window.scrollTo(0, 0);
+    useEffect( () => window.scrollTo( { top:0, left:0, behavior:"auto"}));
+
 
     const params = useParams();
     const id = params.id;

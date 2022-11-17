@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/sights/*").permitAll()
                 .antMatchers("/api/hello").authenticated()
                 .antMatchers("/api/ciao").hasAnyAuthority("ADMIN")
-                .antMatchers("/api/guten_tag").hasAnyAuthority("UEBER18")
+                .antMatchers("/api/guten_tag").hasAnyAuthority("USER")
                 .and().httpBasic().and().csrf().disable();
     }
 
