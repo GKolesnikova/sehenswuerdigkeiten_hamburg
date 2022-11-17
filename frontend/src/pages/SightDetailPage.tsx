@@ -5,6 +5,8 @@ import UpdateSight from "../components/UpdateSight";
 import DeleteSight from "../components/DeleteSight";
 import {ReplyIcon} from "@primer/octicons-react";
 import "./SightDetailPage.css";
+import isAdmin from "../components/IsAdmin";
+import {UserInfoDto} from "../model/UserInfoDto";
 
 
 
@@ -13,6 +15,8 @@ type SightDetailPageProps = {
     sights: Sight[];
     deleteSightById: (id: string | undefined)  => void;
     updateSight: (id: string | undefined, sight: Sight)  => void;
+
+    me: UserInfoDto | undefined;
 
 }
 
@@ -42,6 +46,7 @@ export default function SightDetailPage (props: SightDetailPageProps) {
         );
     }
 
+
     return (
                 <div>
                     <div className="shadow p-4 mb-5 bg-white rounded  ">
@@ -54,12 +59,16 @@ export default function SightDetailPage (props: SightDetailPageProps) {
                                 </Link>
                             </div>
 
+
+                            { isAdmin (props.me) &&
                             <div className= "col-4">
                                 <button type="button" className="btn btn-outline-info update" data-bs-toggle="modal"   data-bs-target="#exampleModal1"   style={{width: "13em", height: "2.5em"}} >
                                     <i className="bi bi-pencil-square" style={{ marginRight: "10px"}}></i>Update
                                 </button>
                                 <UpdateSight  sights={props.sights} updateSight={props.updateSight}/>
                             </div>
+                            }
+
 
                             <div className= "col-4">
                                 <DeleteSight sight={findSight}  deleteSightById={props.deleteSightById}  />

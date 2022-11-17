@@ -13,7 +13,7 @@ public class WeatherObjectService {
 
     WebClient webClient = WebClient.create("https://api.openweathermap.org/data/2.5/weather");
 
-    @Value("${WEATHER_API_KEY}")
+    @Value("${weather.api.key}")
     public String WEATHER_API_KEY;
 
 

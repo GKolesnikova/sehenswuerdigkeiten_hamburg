@@ -37,7 +37,7 @@ function App() {
                   <Routes>
                       < Route path={"/homepage"} element={<Homepage/>}  />
                       < Route path={"/"} element={<SightGallery  sights={sights} weatherObject={weatherObject}  me={me} addNewSightToFavoriteListUser={addNewSightToFavoriteListUser} deleteSightFromFavoriteListeUser={deleteSightFromFavoriteListeUser}  />}  />
-                      < Route path={"/sights/:id"} element={<SightDetailPage  sights={sights}  updateSight={updateSight}  deleteSightById={deleteSightById}/>}  />
+                      < Route path={"/sights/:id"} element={<SightDetailPage  sights={sights} me={me} updateSight={updateSight}   deleteSightById={deleteSightById}/>}  />
                       < Route path={"/form"} element={<CreateSightPage addNewSight={addNewSight}/>}  />
                   </Routes>
               </HashRouter>
