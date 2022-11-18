@@ -117,14 +117,14 @@ export default function LoginModul (props: LoginPageProps) {
                             <div>
                                 <form>
                                     <div className="greetings">
-                                        <div style={{ color: "rgb(137 93 17)"}}>Herzlich willkommen zurück
-                                            <h3 style={{color: "#16dbd6" }}>
+                                        <div style={{ color: "rgb(211 136 4)"}}><h5>Herzlich willkommen zurück</h5>
+                                            <h3 style={{color: "#05bbde" }}>
                                                 <i className="bi bi-emoji-sunglasses" style={{ marginRight: "10px" }}></i>
                                                 {props.me.userName}!
                                             </h3>
                                         </div>
                                     </div>
-                                    <button type="submit" className="btn btn-outline-warning" style={{width: "13em", height: "2.5em"}} onClick={logout}>
+                                    <button type="submit" className="btn btn-outline-warning sign-out" style={{width: "13em", height: "2.5em"}} onClick={logout}>
                                         <i className="bi bi-door-open" style={{ marginRight: "10px"}}></i>Sign out</button>
                                 </form>
                             </div>

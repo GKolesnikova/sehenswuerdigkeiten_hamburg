@@ -15,7 +15,6 @@ type SightDetailPageProps = {
     sights: Sight[];
     deleteSightById: (id: string | undefined)  => void;
     updateSight: (id: string | undefined, sight: Sight)  => void;
-
     me: UserInfoDto | undefined;
 
 }
@@ -60,22 +59,23 @@ export default function SightDetailPage (props: SightDetailPageProps) {
                             </div>
 
 
-                            { isAdmin (props.me) &&
+        { isAdmin (props.me) &&
                             <div className= "col-4">
                                 <button type="button" className="btn btn-outline-info update" data-bs-toggle="modal"   data-bs-target="#exampleModal1"   style={{width: "13em", height: "2.5em"}} >
                                     <i className="bi bi-pencil-square" style={{ marginRight: "10px"}}></i>Update
                                 </button>
                                 <UpdateSight  sights={props.sights} updateSight={props.updateSight}/>
                             </div>
-                            }
-
-
+        }
+        { isAdmin (props.me) &&
                             <div className= "col-4">
                                 <DeleteSight sight={findSight}  deleteSightById={props.deleteSightById}  />
                                 <button type="button" className="btn btn-outline-warning delete" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style={{width: "13em", height: "2.5em"}}>
                                     <i className="bi bi-trash3" style={{ marginRight: "10px"}}></i>Delete
                                 </button>
                             </div>
+        }
+
                         </div>
 
                         <div className="col-12 name">
