@@ -3,6 +3,7 @@ import "./NavBar.css";
 import React from "react";
 import {AppUser} from "../model/AppUser";
 import {UserInfoDto} from "../model/UserInfoDto";
+import isAdmin from "./IsAdmin";
 
 
 
@@ -30,9 +31,15 @@ export default function NavBar ( props: NavBarProps ) {
                         <li className="nav-item">
                             <a className="nav-link" href="/" style={{color: "#0d6efd", fontSize:"1.2em"}}>Sights</a>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/#/form" style={{color: "#0d6efd", fontSize:"1.2em"}}>Add new Sight</a>
-                        </li>
+
+                            {isAdmin(props.me) &&
+                                <li className="nav-item">
+                                    <a className="nav-link" href="/#/form"
+                                       style={{color: "#0d6efd", fontSize: "1.2em"}}>Add new Sight</a>
+                                </li>
+                            }
+
+
                         </ul>
                     </div>
                     <div className="col-4" style={{ display: "flex", flexDirection: "column", justifyContent: "center"}}>

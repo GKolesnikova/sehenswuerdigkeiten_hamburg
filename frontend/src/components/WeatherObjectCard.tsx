@@ -29,55 +29,49 @@ export default function WeatherObjectCard (props: WeatherObjectCardProps) {
         <div>
             <div className="row weather">
                 <div className="col-6 weather-main-info">
+
                     <div className="row">
                         <div className="col-6">
-                            <h2>{props.weatherObject.name}</h2>
-                            <h1>{props.weatherObject.main.temp} °C</h1>
-                            <p>Temperature feels like {props.weatherObject.main.feels_like} °C<i
-                                className="bi bi-thermometer-half"></i></p>
-                            <h6>{getDateFromTimestamp (props.weatherObject.dt)} </h6>
-
+                            <h2 style={{color: "#02bbde"}}>{props.weatherObject.name}</h2>
+                            <h1 style={{color: "#ffbb05"}}>{props.weatherObject.main.temp} °C</h1>
+                            <p style={{color: "rgb(137 93 17)"}}>It feels like {props.weatherObject.main.feels_like} °C<i
+                                className="bi bi-thermometer-half" style={{ marginRight: "10px"}}></i></p>
+                            <h6 style={{color: "rgb(86 47 10)"}}>{getDateFromTimestamp (props.weatherObject.dt)} </h6>
                         </div>
 
                         <div className="col-6">
-
                             <div>{props.weatherObject.weather.map((element) =>
                                 <div key={Math.random()*16}>
-                                    <img src={"http://openweathermap.org/img/wn/" + element.icon + "@2x.png"}  alt={"icon"}  />
-                                    <p>{element.description}</p>
+                                    <img src={"http://openweathermap.org/img/wn/" + element.icon + "@2x.png"}  alt={"icon"}   />
+                                    <p style={{color: "rgb(137 93 17)"}}>{element.description}</p>
                                 </div>
                             )}
-                                <p><i className="bi bi-droplet"></i>Humidity: {props.weatherObject.main.humidity} %</p>
-
-
+                                <p style={{color: "rgb(137 93 17)"}}><i className="bi bi-droplet" style={{ marginRight: "10px", color: "#00bbde"}}></i>Humidity: {props.weatherObject.main.humidity} %</p>
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div className="col-6 weather-detail-info">
                     <div className="row">
 
-                    <div className="col-6">
-
-
-                    </div>
-                    <div className="col-6">
-                        <div><i className="bi bi-cloud-fog"></i>Cloudiness {props.weatherObject.clouds.all} %</div>
-
-                        <div>Visibility is {props.weatherObject.visibility / 1000} km</div>
-
-                        <div>Wind speed: {props.weatherObject.wind.speed} m/s</div>
-                        <div style={{ margin: "2p% 0"}}>Atmospheric pressure: {props.weatherObject.main.pressure} hPa</div>
-
-                        <div>
-                            <span><i className="bi bi-brightness-alt-high" style={{ fontSize: "30px"}}></i> {getTimeFromTimestamp (props.weatherObject.sys.sunrise)}</span>
-                            <span><i className="bi bi-brightness-alt-low" style={{ fontSize: "30px"}}></i> {getTimeFromTimestamp (props.weatherObject.sys.sunset)}</span>
+                        <div className="col-6">
+                            <img src={"https://a.cdn-hotels.com/gdcs/production19/d1430/c53e41bd-1e9b-4c80-b15b-01e81b1c4679.jpg?impolicy=fcrop&w=800&h=533&q=medium"}  alt={"Himmel"} style={{height: "180px", width:"200px"}}/>
                         </div>
 
+                        <div className="col-6 text-start ">
+                            <div style={{color: "rgb(137 93 17)"}}><i className="bi bi-cloud-fog" style={{ marginRight: "10px", color: "rgb(2 187 223)"}}></i>Cloudiness: {props.weatherObject.clouds.all} %</div>
 
+                            <div style={{color: "rgb(137 93 17)"}}><i className="bi bi-eye" style={{ marginRight: "10px", color: "rgb(2 187 223)"}}></i>Visibility is {props.weatherObject.visibility / 1000} km</div>
+
+                            <div style={{color: "rgb(137 93 17)"}}><i className="bi bi-wind" style={{ marginRight: "10px", color: "rgb(2 187 223)"}}></i>Wind speed: {props.weatherObject.wind.speed} m/s</div>
+                            <div style={{ margin: "2p% 0", color: "rgb(137 93 17)"}}><i className="bi bi-arrow-down"  style={{ marginRight: "10px", color: "rgb(2 187 223)"}}></i>Atm. pressure: {props.weatherObject.main.pressure} hPa</div>
+
+                            <div>
+                                <span style={{color: "rgb(86 47 10)"}}><i className="bi bi-brightness-alt-high" style={{ fontSize: "30px", color: "rgb(255 187 5)"}}></i> {getTimeFromTimestamp (props.weatherObject.sys.sunrise)}</span>
+                                <span style={{color: "rgb(86 47 10)"}}><i className="bi bi-brightness-alt-low" style={{ fontSize: "30px", color: "rgb(255 187 5)"}}></i> {getTimeFromTimestamp (props.weatherObject.sys.sunset)}</span>
+                            </div>
+                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
