@@ -35,8 +35,8 @@ a.zuruck >h1:hover  {
     --bs-btn-active-border-color: #0d6efd;
 }
 
-.delete {
 
+.delete {
     color : orange;
     --bs-btn-border-color:orange;
 
@@ -84,7 +84,6 @@ a.zuruck >h1:hover  {
 
 .karte {
     margin: 1% 0;
-
 }
 
 

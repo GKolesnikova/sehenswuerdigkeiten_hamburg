@@ -53,7 +53,6 @@ export default function NavBar ( props: NavBarProps ) {
             </div>
 
 
-
             <div className={"app-fotos row"} style={{height: "370px", border: "10px solid #fffb50"}} >
                 <img className={"col-6 p-0"} src={"/images/main_page/hamburg1.jpeg"} alt={"Logo Hamburg 1"} style={{height: "inherit"}} />
                 <img className={"col-6 p-0"} src={process.env.PUBLIC_URL + "/images/main_page/hamburg2.jpeg"} alt={"Logo Hamburg 2"} style={{height: "inherit"}}/>

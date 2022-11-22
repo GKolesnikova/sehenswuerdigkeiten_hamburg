@@ -170,7 +170,4 @@ export default function CreateSightPage (props: CreateSightProps) {
             </form>
         </div>
     )
-
-
-
 }

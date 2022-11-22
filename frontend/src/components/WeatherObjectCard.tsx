@@ -25,6 +25,10 @@ export default function WeatherObjectCard (props: WeatherObjectCardProps) {
         return date;
     }
 
+    const getRoundedValue = (value : number) => {
+        return Math.round(value);
+    }
+
     return (
         <div>
             <div className="row weather">
@@ -33,8 +37,8 @@ export default function WeatherObjectCard (props: WeatherObjectCardProps) {
                     <div className="row">
                         <div className="col-6">
                             <h2 style={{color: "#02bbde"}}>{props.weatherObject.name}</h2>
-                            <h1 style={{color: "#ffbb05"}}>{props.weatherObject.main.temp} °C</h1>
-                            <p style={{color: "rgb(137 93 17)"}}>It feels like {props.weatherObject.main.feels_like} °C<i
+                            <h1 style={{color: "#ffbb05"}}>{getRoundedValue(props.weatherObject.main.temp)} °C</h1>
+                            <p style={{color: "rgb(137 93 17)"}}>It feels like {getRoundedValue(props.weatherObject.main.feels_like)} °C<i
                                 className="bi bi-thermometer-half" style={{ marginRight: "10px"}}></i></p>
                             <h6 style={{color: "rgb(86 47 10)"}}>{getDateFromTimestamp (props.weatherObject.dt)} </h6>
                         </div>
