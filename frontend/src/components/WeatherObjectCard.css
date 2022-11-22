@@ -3,9 +3,7 @@
  }
 
 
-
 .weather-main-info {
-
     padding: 2% ;
     background-color: white;
     border-radius: 50px 0 0 50px
@@ -16,5 +14,4 @@
     padding: 2% ;
     background-color: #c1f3f1;
     border-radius: 0 50px 50px 0;
-
 }

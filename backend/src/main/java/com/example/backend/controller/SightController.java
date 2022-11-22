@@ -42,6 +42,4 @@ public class SightController {
         return sightService.deleteSightById(id);
     }
 
-
-
 }

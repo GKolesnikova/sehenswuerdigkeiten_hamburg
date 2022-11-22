@@ -39,5 +39,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure (AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(appUserDetailsService);
     }
-
 }

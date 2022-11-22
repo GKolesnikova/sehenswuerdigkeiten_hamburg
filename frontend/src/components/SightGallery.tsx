@@ -40,13 +40,13 @@ export default function SightGallery (props: SightGalleryProps) {
              </div>
 
             <div   style={{margin: "0 7%"}}>
-             {filteredSights.length < 1 ?
-             <h1 style={{color: "rgb(137 93 17)"}}>Keine Sehenswürdigkeiten vorhanden</h1>
-             :
-                 filteredSights.map((sight) =>
-                     <SightCard key={sight.id} sight={sight} me={props.me} addNewSightToFavoriteListUser={props.addNewSightToFavoriteListUser} deleteSightFromFavoriteListeUser={props.deleteSightFromFavoriteListeUser}  />)
+                 {filteredSights.length < 1 ?
+                 <h1 style={{color: "rgb(137 93 17)"}}>Keine Sehenswürdigkeiten vorhanden</h1>
+                 :
+                     filteredSights.map((sight) =>
+                         <SightCard key={sight.id} sight={sight} me={props.me} addNewSightToFavoriteListUser={props.addNewSightToFavoriteListUser} deleteSightFromFavoriteListeUser={props.deleteSightFromFavoriteListeUser}  />)
 
-                 }
+                     }
             </div>
          </div>
      )

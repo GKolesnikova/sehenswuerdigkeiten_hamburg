@@ -2,9 +2,11 @@
     z-index: 1020 !important;
 }
 
+
 span {
     width:  100px;
 }
+
 
 .reg {
     --bs-btn-hover-color:#0d6efd;
@@ -16,8 +18,8 @@ span {
     --bs-btn-active-border-color: #0d6efd;
 }
 
-.close {
 
+.close {
     color : orange;
     --bs-btn-border-color:orange;
 
@@ -28,5 +30,4 @@ span {
     --bs-btn-active-color: #05ea08;
     --bs-btn-active-bg: #fffb50;
     --bs-btn-active-border-color: #f5ef7d;
-
 }
